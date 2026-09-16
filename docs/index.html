@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bug severity results explorer</title>
+<style>
+  :root {
+    color-scheme: light;
+    --surface-1:      #fcfcfb;
+    --page:           #f9f9f7;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --gridline:       #e1e0d9;
+    --baseline-c:     #2a78d6;
+    --context-c:      #eb6834;
+    --good:           #0ca30c;
+    --critical:       #d03b3b;
+    --good-wk:        #e3f5e3;
+    --critical-wk:    #fbe8e7;
+    --border:         rgba(11,11,11,0.10);
+    --row-hover:      rgba(42,120,214,0.06);
+    --chip-active-bg: #2a78d6;
+    --chip-active-fg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --surface-1:      #1a1a19;
+      --page:           #0d0d0d;
+      --text-primary:   #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted:     #898781;
+      --gridline:       #2c2c2a;
+      --baseline-c:     #3987e5;
+      --context-c:      #d95926;
+      --good:           #0ca30c;
+      --critical:       #e66767;
+      --good-wk:        #0f2a12;
+      --critical-wk:    #331615;
+      --border:         rgba(255,255,255,0.10);
+      --row-hover:      rgba(57,135,229,0.10);
+      --chip-active-bg: #3987e5;
+      --chip-active-fg: #0d0d0d;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-1:      #1a1a19;
+    --page:           #0d0d0d;
+    --text-primary:   #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted:     #898781;
+    --gridline:       #2c2c2a;
+    --baseline-c:     #3987e5;
+    --context-c:      #d95926;
+    --good:           #0ca30c;
+    --critical:       #e66767;
+    --good-wk:        #0f2a12;
+    --critical-wk:    #331615;
+    --border:         rgba(255,255,255,0.10);
+    --row-hover:      rgba(57,135,229,0.10);
+    --chip-active-bg: #3987e5;
+    --chip-active-fg: #0d0d0d;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--page);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--baseline-c); }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px 64px; }
+
+  /* --- sticky summary bar --- */
+  .summary-bar {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--page);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0 12px;
+  }
+  .summary-inner { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+  .summary-top { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+  .summary-top h1 { font-size: 1.1rem; margin: 0; }
+  .summary-top .repo-link { font-size: 0.78rem; color: var(--text-muted); }
+  .stat-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .stat-tile {
+    flex: 1; min-width: 150px;
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
+    padding: 8px 12px;
+  }
+  .stat-tile .label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; }
+  .stat-tile .value { font-size: 1.15rem; font-weight: 700; font-variant-numeric: tabular-nums; margin-top: 2px; }
+  .stat-tile .value .arrow { color: var(--text-muted); font-weight: 400; font-size: 0.95rem; margin: 0 3px; }
+  .stat-tile.collapse-good .value { color: var(--good); }
+  .stat-tile.collapse-bad .value { color: var(--critical); }
+  .swatch { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 5px; }
+
+  /* --- controls --- */
+  .controls {
+    display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center;
+    padding: 14px 0; border-bottom: 1px solid var(--border); margin-bottom: 14px;
+  }
+  .control-group { display: flex; align-items: center; gap: 6px; }
+  .control-group .cg-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; margin-right: 2px; }
+  .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .seg button {
+    border: none; background: var(--surface-1); color: var(--text-secondary);
+    font: inherit; font-size: 0.8rem; padding: 6px 11px; cursor: pointer;
+    border-right: 1px solid var(--border);
+  }
+  .seg button:last-child { border-right: none; }
+  .seg button.active { background: var(--baseline-c); color: #fff; }
+  .chip {
+    border: 1px solid var(--border); background: var(--surface-1); color: var(--text-secondary);
+    font: inherit; font-size: 0.8rem; padding: 6px 12px; border-radius: 999px; cursor: pointer;
+  }
+  .chip.active { background: var(--chip-active-bg); color: var(--chip-active-fg); border-color: var(--chip-active-bg); }
+  #search {
+    font: inherit; font-size: 0.85rem; padding: 6px 12px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary);
+    min-width: 200px; flex: 1;
+  }
+  .result-count { font-size: 0.8rem; color: var(--text-muted); margin-left: auto; white-space: nowrap; }
+
+  /* --- table --- */
+  .table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-1); }
+  table.explorer { border-collapse: collapse; width: 100%; font-size: 0.85rem; min-width: 720px; }
+  table.explorer thead th {
+    position: sticky; top: 0;
+    background: var(--surface-1); text-align: left; padding: 10px 12px;
+    color: var(--text-secondary); font-weight: 500; font-size: 0.75rem;
+    text-transform: uppercase; letter-spacing: 0.03em;
+    border-bottom: 1px solid var(--gridline); cursor: pointer; user-select: none;
+    white-space: nowrap;
+  }
+  table.explorer thead th .sort-arrow { color: var(--text-muted); font-size: 0.7rem; margin-left: 3px; }
+  table.explorer tbody tr.row { cursor: pointer; border-bottom: 1px solid var(--gridline); }
+  table.explorer tbody tr.row:hover { background: var(--row-hover); }
+  table.explorer tbody tr.row.expanded { background: var(--row-hover); }
+  table.explorer td { padding: 9px 12px; vertical-align: top; }
+  td.id-col { color: var(--text-muted); font-variant-numeric: tabular-nums; width: 40px; }
+  td.desc-col { max-width: 420px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-secondary); }
+  .pred-pill {
+    display: inline-flex; align-items: center; gap: 5px; font-size: 0.8rem; white-space: nowrap;
+  }
+  .pred-pill .mark { font-weight: 700; }
+  .pred-pill.correct .mark { color: var(--good); }
+  .pred-pill.wrong .mark { color: var(--critical); }
+  .chev { color: var(--text-muted); font-size: 0.7rem; }
+
+  /* --- expanded detail row --- */
+  tr.detail-row td {
+    background: var(--page); border-bottom: 1px solid var(--gridline);
+    padding: 16px 20px;
+  }
+  .detail-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; }
+  @media (max-width: 800px) { .detail-grid { grid-template-columns: 1fr; } }
+  .detail-desc {
+    font-size: 0.85rem; line-height: 1.55; color: var(--text-primary);
+    white-space: pre-wrap; max-height: 260px; overflow-y: auto;
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 8px; padding: 12px;
+  }
+  .detail-compare { display: flex; flex-direction: column; gap: 8px; }
+  .compare-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; padding: 6px 10px; border-radius: 6px; background: var(--surface-1); border: 1px solid var(--border); }
+  .compare-row .k { color: var(--text-secondary); }
+  .neighbors { margin-top: 4px; }
+  .neighbors h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-muted); margin: 0 0 6px; }
+  .neighbor { font-size: 0.78rem; line-height: 1.4; padding: 6px 8px; border-radius: 6px; background: var(--surface-1); border: 1px solid var(--border); margin-bottom: 5px; }
+  .neighbor .sim { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+  footer { color: var(--text-muted); font-size: 0.78rem; margin-top: 24px; line-height: 1.6; }
+
+  .empty-state { padding: 40px; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+</style>
+</head>
+<body>
+
+<div class="summary-bar">
+  <div class="summary-inner">
+    <div class="summary-top">
+      <h1>🐛 Bug severity results explorer</h1>
+      <span class="repo-link"><a href="https://github.com/bmwelu12/bug-severity-context-eng" target="_blank" rel="noopener">bmwelu12/bug-severity-context-eng</a> · n=<span id="stat-n">–</span></span>
+    </div>
+    <div class="stat-row" id="stat-row"></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="controls">
+    <div class="control-group">
+      <span class="cg-label">True label</span>
+      <div class="seg" data-filter="trueLabel">
+        <button data-value="all" class="active">All</button>
+        <button data-value="not severe">Not severe</button>
+        <button data-value="severe">Severe</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <span class="cg-label">Baseline</span>
+      <div class="seg" data-filter="baselineCorrect">
+        <button data-value="all" class="active">All</button>
+        <button data-value="correct">Correct</button>
+        <button data-value="wrong">Wrong</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <span class="cg-label">Context</span>
+      <div class="seg" data-filter="contextCorrect">
+        <button data-value="all" class="active">All</button>
+        <button data-value="correct">Correct</button>
+        <button data-value="wrong">Wrong</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <button class="chip" id="chip-disagree" data-preset="disagree">⚡ Disagreements</button>
+      <button class="chip" id="chip-ctx-wrong" data-preset="ctxWrongBaselineRight">⚠️ Context wrong, baseline right</button>
+      <button class="chip" id="chip-reset" data-preset="reset">Reset filters</button>
+    </div>
+    <input id="search" type="search" placeholder="Search bug description…">
+    <span class="result-count" id="result-count"></span>
+  </div>
+
+  <div class="table-scroll">
+    <table class="explorer">
+      <thead>
+        <tr>
+          <th data-sort="id">#<span class="sort-arrow"></span></th>
+          <th data-sort="trueLabel">True label<span class="sort-arrow"></span></th>
+          <th data-sort="baselinePred">Baseline<span class="sort-arrow"></span></th>
+          <th data-sort="contextPred">Context<span class="sort-arrow"></span></th>
+          <th data-sort="description">Description<span class="sort-arrow"></span></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <footer>
+    Generated by <code>scripts/05_export_docs_json.py</code> from the real n=300
+    run (both conditions, 600 API calls to <code>claude-haiku-4-5</code>).
+    Re-run the pipeline and regenerate <code>docs/results.json</code> any time —
+    push it and this page updates automatically, no rebuild step. See the
+    <a href="../README.md">README</a> and
+    <a href="../results.html">summary dashboard</a> for the full write-up.
+  </footer>
+
+</div>
+
+<script>
+let DATA = null;
+let sortKey = "id";
+let sortDir = 1;
+let filters = { trueLabel: "all", baselineCorrect: "all", contextCorrect: "all", agree: "all" };
+let searchTerm = "";
+let expandedId = null;
+
+function pct(x) { return (x * 100).toFixed(1) + "%"; }
+
+async function boot() {
+  const res = await fetch("results.json");
+  DATA = await res.json();
+  renderSummary();
+  render();
+}
+
+function renderSummary() {
+  const s = DATA.summary;
+  document.getElementById("stat-n").textContent = s.n;
+  const b = s.baseline, c = s.context;
+  const tiles = [
+    {
+      label: "Accuracy",
+      value: `<span class="swatch" style="background:var(--baseline-c)"></span>${pct(b.accuracy)}<span class="arrow">→</span><span class="swatch" style="background:var(--context-c)"></span>${pct(c.accuracy)}`,
+    },
+    {
+      label: "Severe F1",
+      value: `<span class="swatch" style="background:var(--baseline-c)"></span>${b.perClass.severe.f1.toFixed(3)}<span class="arrow">→</span><span class="swatch" style="background:var(--context-c)"></span>${c.perClass.severe.f1.toFixed(3)}`,
+    },
+    {
+      label: "Severe recall",
+      value: `<span class="swatch" style="background:var(--baseline-c)"></span>${pct(b.perClass.severe.recall)}<span class="arrow">→</span><span class="swatch" style="background:var(--context-c)"></span>${pct(c.perClass.severe.recall)}`,
+    },
+    {
+      label: "Baseline collapse",
+      value: b.collapsed ? "COLLAPSED" : "Not collapsed",
+      cls: b.collapsed ? "collapse-bad" : "collapse-good",
+    },
+    {
+      label: "Context collapse",
+      value: c.collapsed ? "COLLAPSED" : "Not collapsed",
+      cls: c.collapsed ? "collapse-bad" : "collapse-good",
+    },
+  ];
+  document.getElementById("stat-row").innerHTML = tiles
+    .map(
+      (t) => `<div class="stat-tile ${t.cls || ""}"><div class="label">${t.label}</div><div class="value">${t.value}</div></div>`
+    )
+    .join("");
+}
+
+function matchesFilters(row) {
+  if (filters.trueLabel !== "all" && row.trueLabel !== filters.trueLabel) return false;
+  if (filters.baselineCorrect === "correct" && !row.baseline.correct) return false;
+  if (filters.baselineCorrect === "wrong" && row.baseline.correct) return false;
+  if (filters.contextCorrect === "correct" && !row.context.correct) return false;
+  if (filters.contextCorrect === "wrong" && row.context.correct) return false;
+  if (filters.agree === "disagree" && row.agree) return false;
+  if (filters.agree === "ctxWrongBaselineRight" && !(row.baseline.correct && !row.context.correct)) return false;
+  if (searchTerm && !row.description.toLowerCase().includes(searchTerm)) return false;
+  return true;
+}
+
+function sortRows(rows) {
+  const keyFn = {
+    id: (r) => r.id,
+    trueLabel: (r) => r.trueLabel,
+    baselinePred: (r) => r.baseline.prediction,
+    contextPred: (r) => r.context.prediction,
+    description: (r) => r.description,
+  }[sortKey];
+  return rows.slice().sort((a, b) => {
+    const av = keyFn(a), bv = keyFn(b);
+    if (av < bv) return -1 * sortDir;
+    if (av > bv) return 1 * sortDir;
+    return 0;
+  });
+}
+
+function predPill(pred, correct) {
+  const mark = correct ? "✓" : "✗";
+  const cls = correct ? "correct" : "wrong";
+  return `<span class="pred-pill ${cls}" title="${correct ? "Correct" : "Wrong"}"><span class="mark">${mark}</span>${pred}</span>`;
+}
+
+function renderNeighbors(neighbors) {
+  if (!neighbors || !neighbors.length) return "";
+  return `
+    <div class="neighbors">
+      <h4>Retrieved neighbors (shown to the model)</h4>
+      ${neighbors
+        .map(
+          (n) => `<div class="neighbor"><span class="sim">sim=${n.similarity.toFixed(2)}</span> · <strong>${n.label}</strong> — ${escapeHtml(n.description.slice(0, 180))}…</div>`
+        )
+        .join("")}
+    </div>`;
+}
+
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+function render() {
+  const filtered = sortRows(DATA.rows.filter(matchesFilters));
+  document.getElementById("result-count").textContent = `${filtered.length} of ${DATA.rows.length} rows`;
+
+  const tbody = document.getElementById("tbody");
+  if (!filtered.length) {
+    tbody.innerHTML = `<tr><td colspan="6" class="empty-state">No rows match the current filters.</td></tr>`;
+    return;
+  }
+
+  const html = [];
+  for (const row of filtered) {
+    const isOpen = row.id === expandedId;
+    html.push(`
+      <tr class="row ${isOpen ? "expanded" : ""}" data-id="${row.id}">
+        <td class="id-col">${row.id}</td>
+        <td>${row.trueLabel}</td>
+        <td>${predPill(row.baseline.prediction, row.baseline.correct)}</td>
+        <td>${predPill(row.context.prediction, row.context.correct)}</td>
+        <td class="desc-col">${escapeHtml(row.description.slice(0, 90))}…</td>
+        <td class="chev">${isOpen ? "▲" : "▼"}</td>
+      </tr>
+    `);
+    if (isOpen) {
+      html.push(`
+        <tr class="detail-row">
+          <td colspan="6">
+            <div class="detail-grid">
+              <div>
+                <div class="detail-desc">${escapeHtml(row.description)}</div>
+              </div>
+              <div class="detail-compare">
+                <div class="compare-row"><span class="k">True label</span><strong>${row.trueLabel}</strong></div>
+                <div class="compare-row"><span class="k">Baseline</span>${predPill(row.baseline.prediction, row.baseline.correct)}</div>
+                <div class="compare-row"><span class="k">Context</span>${predPill(row.context.prediction, row.context.correct)}</div>
+                ${renderNeighbors(row.context.neighbors)}
+              </div>
+            </div>
+          </td>
+        </tr>
+      `);
+    }
+  }
+  tbody.innerHTML = html.join("");
+
+  tbody.querySelectorAll("tr.row").forEach((tr) => {
+    tr.addEventListener("click", () => {
+      const id = Number(tr.dataset.id);
+      expandedId = expandedId === id ? null : id;
+      render();
+    });
+  });
+}
+
+document.querySelectorAll(".seg").forEach((seg) => {
+  seg.addEventListener("click", (e) => {
+    const btn = e.target.closest("button");
+    if (!btn) return;
+    const filterKey = seg.dataset.filter;
+    filters[filterKey] = btn.dataset.value;
+    seg.querySelectorAll("button").forEach((b) => b.classList.toggle("active", b === btn));
+    // custom presets and this segment are mutually exclusive on the "agree" axis
+    if (filterKey !== "agree") {
+      document.getElementById("chip-disagree").classList.remove("active");
+      document.getElementById("chip-ctx-wrong").classList.remove("active");
+    }
+    render();
+  });
+});
+
+document.getElementById("chip-disagree").addEventListener("click", () => {
+  const active = document.getElementById("chip-disagree").classList.toggle("active");
+  document.getElementById("chip-ctx-wrong").classList.remove("active");
+  filters.agree = active ? "disagree" : "all";
+  render();
+});
+document.getElementById("chip-ctx-wrong").addEventListener("click", () => {
+  const active = document.getElementById("chip-ctx-wrong").classList.toggle("active");
+  document.getElementById("chip-disagree").classList.remove("active");
+  filters.agree = active ? "ctxWrongBaselineRight" : "all";
+  render();
+});
+document.getElementById("chip-reset").addEventListener("click", () => {
+  filters = { trueLabel: "all", baselineCorrect: "all", contextCorrect: "all", agree: "all" };
+  searchTerm = "";
+  document.getElementById("search").value = "";
+  document.querySelectorAll(".seg").forEach((seg) => {
+    seg.querySelectorAll("button").forEach((b) => b.classList.toggle("active", b.dataset.value === "all"));
+  });
+  document.getElementById("chip-disagree").classList.remove("active");
+  document.getElementById("chip-ctx-wrong").classList.remove("active");
+  render();
+});
+
+document.getElementById("search").addEventListener("input", (e) => {
+  searchTerm = e.target.value.trim().toLowerCase();
+  render();
+});
+
+document.querySelectorAll("th[data-sort]").forEach((th) => {
+  th.addEventListener("click", () => {
+    const key = th.dataset.sort;
+    if (sortKey === key) {
+      sortDir *= -1;
+    } else {
+      sortKey = key;
+      sortDir = 1;
+    }
+    document.querySelectorAll("th[data-sort] .sort-arrow").forEach((s) => (s.textContent = ""));
+    th.querySelector(".sort-arrow").textContent = sortDir === 1 ? "▲" : "▼";
+    render();
+  });
+});
+
+boot();
+</script>
+</body>
+</html>

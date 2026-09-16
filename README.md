@@ -73,6 +73,28 @@ etc.) and write `artifacts/` (pickled retrievers) and `results/`
 Drop `--sample_size` to run the full 4,427-row test set (2x the API cost of
 the n=300 pass). Or run `bug_severity_context_eng.ipynb` in Colab.
 
+## Results explorer
+
+**[Open the interactive explorer →](https://bmwelu12.github.io/bug-severity-context-eng/)**
+(hosted on GitHub Pages from `/docs`). Every one of the 300 test rows,
+filterable by true label / baseline-correct / context-correct, with
+one-click priority views for **disagreements** and **context wrong but
+baseline right** — click any row to expand the full description, both
+predictions against the true label, and the actual retrieved neighbors
+shown to the model for that prediction.
+
+To regenerate after a new run:
+
+```bash
+cd data/raw
+python3 ../../scripts/05_export_docs_json.py --task sev --sample_size 300
+```
+
+This writes `docs/results.json`. Commit and push it — GitHub Pages serves
+straight from `/docs` on `main`, so the live page updates with no rebuild
+step. See [GitHub Pages setup](#github-pages-setup) below if it's not
+enabled yet.
+
 ## Live demo
 
 `app.py` is a Gradio app (matching the [ticket-triage project](https://github.com/bmwelu12/ticket-triage-lora-finetuning)'s
@@ -131,3 +153,17 @@ JSON replies in a ` ```json ` fence, so a plain `json.loads()` on the raw
 response fails 100% of the time. `classify_one()` in `03_classify.py`
 extracts the `{...}` object first — the first real run silently produced
 zero valid predictions on both conditions until this was fixed.
+
+## GitHub Pages setup
+
+The explorer lives in `/docs` and needs Pages pointed at it once:
+
+1. On the repo, go to **Settings → Pages**.
+2. Under "Build and deployment", set **Source: Deploy from a branch**.
+3. Set **Branch: `main`**, folder **`/docs`**, then Save.
+4. It builds in a minute or two, then serves at
+   **https://bmwelu12.github.io/bug-severity-context-eng/**.
+
+No build step, no Jekyll config needed — `docs/index.html` fetches
+`docs/results.json` directly at runtime, so any future push that updates
+`results.json` (via `05_export_docs_json.py`) goes live automatically.
