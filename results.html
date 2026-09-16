@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bug severity context-engineering results</title>
+<style>
+  :root {
+    color-scheme: light;
+    --surface-1:      #fcfcfb;
+    --page:           #f9f9f7;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --gridline:       #e1e0d9;
+    --baseline-c:     #2a78d6; /* categorical slot 1 */
+    --baseline-c-wk:  #cde2fb; /* sequential step 100 */
+    --context-c:      #eb6834; /* categorical slot 2 */
+    --good:           #0ca30c;
+    --critical:       #d03b3b;
+    --border:         rgba(11,11,11,0.10);
+    --seq-100: #cde2fb; --seq-200: #9ec5f4; --seq-300: #6da7ec;
+    --seq-400: #3987e5; --seq-500: #256abf; --seq-600: #184f95;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --surface-1:      #1a1a19;
+      --page:           #0d0d0d;
+      --text-primary:   #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted:     #898781;
+      --gridline:       #2c2c2a;
+      --baseline-c:     #3987e5;
+      --baseline-c-wk:  #184f95;
+      --context-c:      #d95926;
+      --good:           #0ca30c;
+      --critical:       #e66767;
+      --border:         rgba(255,255,255,0.10);
+      --seq-100: #184f95; --seq-200: #1c5cab; --seq-300: #256abf;
+      --seq-400: #3987e5; --seq-500: #6da7ec; --seq-600: #9ec5f4;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-1:      #1a1a19;
+    --page:           #0d0d0d;
+    --text-primary:   #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted:     #898781;
+    --gridline:       #2c2c2a;
+    --baseline-c:     #3987e5;
+    --baseline-c-wk:  #184f95;
+    --context-c:      #d95926;
+    --good:           #0ca30c;
+    --critical:       #e66767;
+    --border:         rgba(255,255,255,0.10);
+    --seq-100: #184f95; --seq-200: #1c5cab; --seq-300: #256abf;
+    --seq-400: #3987e5; --seq-500: #6da7ec; --seq-600: #9ec5f4;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 32px 16px 64px; }
+  header { margin-bottom: 28px; }
+  h1 { font-size: 1.5rem; margin: 0 0 6px; }
+  .sub { color: var(--text-secondary); font-size: 0.95rem; max-width: 70ch; line-height: 1.5; }
+  .sub a { color: var(--baseline-c); }
+  .n-badge {
+    display: inline-block; margin-top: 10px; font-size: 0.78rem;
+    color: var(--text-muted); border: 1px solid var(--border);
+    border-radius: 999px; padding: 3px 10px;
+  }
+
+  .card {
+    background: var(--surface-1); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px 22px; margin-bottom: 20px;
+  }
+  .card h2 { font-size: 1.05rem; margin: 0 0 4px; }
+  .card .desc { color: var(--text-secondary); font-size: 0.85rem; margin: 0 0 18px; max-width: 68ch; line-height: 1.5; }
+
+  /* verdict banner */
+  .verdict {
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .verdict .badge {
+    flex: none; width: 34px; height: 34px; border-radius: 50%;
+    background: var(--good); color: #fff; display: flex; align-items: center;
+    justify-content: center; font-size: 1.1rem; font-weight: 700;
+  }
+  .verdict p { margin: 0; line-height: 1.55; font-size: 0.95rem; }
+  .verdict strong { color: var(--text-primary); }
+
+  /* legend */
+  .legend { display: flex; gap: 18px; margin-bottom: 14px; font-size: 0.82rem; color: var(--text-secondary); }
+  .legend .sw { display: inline-flex; align-items: center; gap: 6px; }
+  .legend .dot { width: 10px; height: 10px; border-radius: 2px; }
+
+  /* grouped bar chart (SVG-free, plain divs) */
+  .bars { display: flex; flex-direction: column; gap: 16px; }
+  .bar-row { display: grid; grid-template-columns: 110px 1fr 60px; align-items: center; gap: 10px; }
+  .bar-row .label { font-size: 0.85rem; color: var(--text-secondary); }
+  .bar-track { position: relative; height: 14px; background: var(--gridline); border-radius: 4px; overflow: hidden; }
+  .bar-fill { position: absolute; top: 0; left: 0; height: 100%; border-radius: 4px 0 0 4px; }
+  .bar-row .val { font-size: 0.82rem; color: var(--text-secondary); font-variant-numeric: tabular-nums; text-align: right; }
+  .true-marker {
+    position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--text-primary); opacity: 0.55;
+  }
+
+  /* confusion matrices */
+  .cms { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 700px) { .cms { grid-template-columns: 1fr; } }
+  .cm-title { font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .cm-title .dot { width: 9px; height: 9px; border-radius: 2px; }
+  table.cm { border-collapse: collapse; width: 100%; font-size: 0.82rem; }
+  table.cm th, table.cm td {
+    border: 1px solid var(--gridline); padding: 10px; text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  table.cm th { color: var(--text-secondary); font-weight: 500; background: transparent; }
+  table.cm td.cell { color: #fff; font-weight: 600; }
+  table.cm caption { caption-side: bottom; font-size: 0.75rem; color: var(--text-muted); padding-top: 8px; text-align: left; }
+
+  /* metrics table */
+  table.metrics { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
+  table.metrics th, table.metrics td {
+    padding: 9px 10px; text-align: right; border-bottom: 1px solid var(--gridline);
+    font-variant-numeric: tabular-nums;
+  }
+  table.metrics th:first-child, table.metrics td:first-child { text-align: left; font-variant-numeric: normal; }
+  table.metrics thead th { color: var(--text-secondary); font-weight: 500; font-size: 0.78rem; }
+  table.metrics td.better { color: var(--good); font-weight: 600; }
+  table.metrics td.worse { color: var(--critical); font-weight: 600; }
+  table.metrics tr.section td { padding-top: 16px; font-weight: 600; color: var(--text-primary); border-bottom: none; }
+
+  .collapse-row { display: flex; gap: 24px; flex-wrap: wrap; }
+  .collapse-card {
+    flex: 1; min-width: 220px; border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px;
+    display: flex; gap: 12px; align-items: center;
+  }
+  .collapse-card .icon {
+    flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--good);
+    color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700;
+  }
+  .collapse-card .txt { font-size: 0.82rem; line-height: 1.4; }
+  .collapse-card .txt b { display: block; font-size: 0.88rem; color: var(--text-primary); margin-bottom: 2px; }
+
+  footer { color: var(--text-muted); font-size: 0.78rem; margin-top: 30px; line-height: 1.6; }
+  footer a { color: var(--baseline-c); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Bug severity context-engineering — results</h1>
+    <p class="sub">
+      Does giving Claude 3 retrieved similar past bug reports (with their known
+      severity) improve severity classification versus a no-context baseline?
+      Real run against <a href="https://github.com/bmwelu12/bug-severity-context-eng">bmwelu12/bug-severity-context-eng</a>,
+      Claude Haiku 4.5, real Bugzilla bug reports.
+    </p>
+    <span class="n-badge">n = 300 test rows · both conditions · 77.2% / 22.8% true class split</span>
+  </header>
+
+  <div class="card">
+    <div class="verdict">
+      <div class="badge">✓</div>
+      <p>
+        <strong>Context helped, on balance, but with a real trade-off.</strong>
+        Adding retrieved neighbors raised overall accuracy (75.3% → 80.3%) and
+        raised F1 on <em>both</em> classes (severe F1 0.622 → 0.655, driven by a
+        big precision gain), but it did so partly by calling "severe" less often —
+        <strong>recall on the severe class dropped from 79.2% to 72.7%</strong>,
+        meaning it missed more actually-severe bugs even as it cried wolf less.
+        For a triage system, that recall drop matters more than the accuracy gain
+        suggests. Neither run collapsed to the majority class.
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Predicted-label distribution</h2>
+    <p class="desc">
+      What each condition actually predicted, out of 300 bugs. The dark tick
+      marks the true distribution (77.2% not severe / 22.8% severe) — the gap
+      between a bar and that tick is how far the model's guessing pattern drifts
+      from reality.
+    </p>
+    <div class="legend">
+      <span class="sw"><span class="dot" style="background:var(--baseline-c)"></span>Baseline</span>
+      <span class="sw"><span class="dot" style="background:var(--context-c)"></span>Context-engineered</span>
+      <span class="sw"><span class="dot" style="background:var(--text-primary);opacity:.55;width:2px;height:10px;border-radius:0"></span>True distribution</span>
+    </div>
+    <div class="bars" id="dist-chart"></div>
+  </div>
+
+  <div class="card">
+    <h2>Confusion matrices</h2>
+    <p class="desc">Rows = true label, columns = predicted label. Darker cells = more bugs.</p>
+    <div class="cms">
+      <div>
+        <div class="cm-title"><span class="dot" style="background:var(--baseline-c)"></span>Baseline</div>
+        <table class="cm" id="cm-baseline"></table>
+      </div>
+      <div>
+        <div class="cm-title"><span class="dot" style="background:var(--context-c)"></span>Context-engineered</div>
+        <table class="cm" id="cm-context"></table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Per-class precision / recall / F1</h2>
+    <p class="desc">Green = the better of the two conditions for that cell; red = worse. Ties are left plain.</p>
+    <table class="metrics" id="metrics-table"></table>
+  </div>
+
+  <div class="card">
+    <h2>Majority-class collapse check</h2>
+    <p class="desc">Fires if a condition predicts one class &gt;97% of the time (or predicts only one class at all).</p>
+    <div class="collapse-row" id="collapse-row"></div>
+  </div>
+
+  <footer>
+    Generated from <code>data/raw/results/sev_classification_results.json</code> and
+    <code>sev_eval_summary.json</code> (real n=300 run, both conditions, 600 total
+    API calls to <code>claude-haiku-4-5</code>). Not the full 4,427-row test set —
+    treat direction as suggestive, not final. See
+    <a href="README.md">README.md</a> for the full write-up and
+    <a href="bug_severity_context_eng.ipynb">the notebook</a> to reproduce or scale up.
+  </footer>
+
+</div>
+
+<script>
+const DATA = {
+  trueDist: { "not severe": 223, "severe": 77 }, // out of 300
+  n: 300,
+  conditions: {
+    baseline: {
+      color: "var(--baseline-c)",
+      predDist: { "not severe": 181, "severe": 119 },
+      cm: { // [true][pred]
+        "not severe": { "not severe": 165, "severe": 58 },
+        "severe":     { "not severe": 16,  "severe": 61 }
+      },
+      metrics: {
+        "not severe": { precision: 0.9116, recall: 0.7399, f1: 0.8168 },
+        "severe":     { precision: 0.5126, recall: 0.7922, f1: 0.6224 },
+        accuracy: 0.7533,
+        macroF1: 0.7196,
+        weightedF1: 0.7669
+      }
+    },
+    context: {
+      color: "var(--context-c)",
+      predDist: { "not severe": 206, "severe": 94 },
+      cm: {
+        "not severe": { "not severe": 185, "severe": 38 },
+        "severe":     { "not severe": 21,  "severe": 56 }
+      },
+      metrics: {
+        "not severe": { precision: 0.8981, recall: 0.8296, f1: 0.8625 },
+        "severe":     { precision: 0.5957, recall: 0.7273, f1: 0.6550 },
+        accuracy: 0.8033,
+        macroF1: 0.7587,
+        weightedF1: 0.8092
+      }
+    }
+  }
+};
+
+function pct(x) { return (x * 100).toFixed(1) + "%"; }
+
+// --- distribution bars ---
+(function renderDist() {
+  const el = document.getElementById("dist-chart");
+  const n = DATA.n;
+  const labels = ["not severe", "severe"];
+  const rows = [];
+  labels.forEach(label => {
+    const trueFrac = DATA.trueDist[label] / n;
+    ["baseline", "context"].forEach(condKey => {
+      const cond = DATA.conditions[condKey];
+      const frac = cond.predDist[label] / n;
+      rows.push(`
+        <div class="bar-row">
+          <div class="label">${label}<br><span style="color:var(--text-muted);font-size:.72rem">${condKey === "baseline" ? "Baseline" : "Context"}</span></div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:${(frac*100).toFixed(1)}%;background:${cond.color}"></div>
+            <div class="true-marker" style="left:${(trueFrac*100).toFixed(1)}%"></div>
+          </div>
+          <div class="val">${cond.predDist[label]} (${pct(frac)})</div>
+        </div>
+      `);
+    });
+  });
+  el.innerHTML = rows.join("");
+})();
+
+// --- confusion matrices ---
+// Concrete hex per mode (mirrors the --seq-* custom properties) so text
+// color can be picked by actual luminance rather than assumed white.
+const SEQ_HEX = {
+  light: ["#cde2fb","#9ec5f4","#6da7ec","#3987e5","#256abf","#184f95"],
+  dark:  ["#184f95","#1c5cab","#256abf","#3987e5","#6da7ec","#9ec5f4"]
+};
+function isDarkMode() {
+  return document.documentElement.getAttribute("data-theme") === "dark" ||
+    (document.documentElement.getAttribute("data-theme") !== "light" &&
+     window.matchMedia("(prefers-color-scheme: dark)").matches);
+}
+function relativeLuminance(hex) {
+  const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255)
+    .map(c => c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+function textColorFor(hex) {
+  // Contrast against white (luminance 1) vs black (luminance 0); pick the
+  // higher-contrast side rather than assuming white always works.
+  const L = relativeLuminance(hex);
+  const contrastWhite = 1.05 / (L + 0.05);
+  const contrastBlack = (L + 0.05) / 0.05;
+  return contrastWhite >= contrastBlack ? "#fff" : "#0b0b0b";
+}
+function renderCM(elId, cond) {
+  const labels = ["not severe", "severe"];
+  const max = Math.max(...labels.flatMap(t => labels.map(p => cond.cm[t][p])));
+  const steps = SEQ_HEX[isDarkMode() ? "dark" : "light"];
+  function shade(v) {
+    const t = v / max; // 0..1
+    const idx = Math.min(steps.length - 1, Math.floor(t * (steps.length - 1) + 0.001));
+    return steps[idx];
+  }
+  let html = "<thead><tr><th></th><th colspan='2' style='font-weight:600'>Predicted</th></tr>" +
+             "<tr><th></th>" + labels.map(l => `<th>${l}</th>`).join("") + "</tr></thead><tbody>";
+  labels.forEach(t => {
+    html += `<tr><th>${t}</th>` + labels.map(p => {
+      const v = cond.cm[t][p];
+      const isDiag = t === p;
+      const bg = isDiag ? shade(v) : "transparent";
+      const textColor = isDiag ? textColorFor(bg) : "var(--text-primary)";
+      return `<td class="cell" style="background:${bg};color:${textColor}">${v}</td>`;
+    }).join("") + "</tr>";
+  });
+  html += "</tbody>";
+  document.getElementById(elId).innerHTML = html;
+  document.getElementById(elId).insertAdjacentHTML("beforeend", `<caption>Row = true label, n=${labels.reduce((s,t)=>s+labels.reduce((s2,p)=>s2+cond.cm[t][p],0),0)}</caption>`);
+}
+renderCM("cm-baseline", DATA.conditions.baseline);
+renderCM("cm-context", DATA.conditions.context);
+
+// --- metrics table ---
+(function renderMetrics() {
+  const b = DATA.conditions.baseline.metrics;
+  const c = DATA.conditions.context.metrics;
+  function cellPair(bv, cv, higherBetter = true) {
+    const bBetter = higherBetter ? bv > cv : bv < cv;
+    const cBetter = higherBetter ? cv > bv : cv < bv;
+    const bCls = bv === cv ? "" : (bBetter ? "better" : "worse");
+    const cCls = bv === cv ? "" : (cBetter ? "better" : "worse");
+    return `<td class="${bCls}">${pct(bv)}</td><td class="${cCls}">${pct(cv)}</td>`;
+  }
+  let html = `<thead><tr><th>Metric</th><th>Baseline</th><th>Context</th></tr></thead><tbody>`;
+  html += `<tr class="section"><td colspan="3">not severe</td></tr>`;
+  html += `<tr><td>Precision</td>${cellPair(b["not severe"].precision, c["not severe"].precision)}</tr>`;
+  html += `<tr><td>Recall</td>${cellPair(b["not severe"].recall, c["not severe"].recall)}</tr>`;
+  html += `<tr><td>F1</td>${cellPair(b["not severe"].f1, c["not severe"].f1)}</tr>`;
+  html += `<tr class="section"><td colspan="3">severe</td></tr>`;
+  html += `<tr><td>Precision</td>${cellPair(b["severe"].precision, c["severe"].precision)}</tr>`;
+  html += `<tr><td>Recall</td>${cellPair(b["severe"].recall, c["severe"].recall)}</tr>`;
+  html += `<tr><td>F1</td>${cellPair(b["severe"].f1, c["severe"].f1)}</tr>`;
+  html += `<tr class="section"><td colspan="3">Overall</td></tr>`;
+  html += `<tr><td>Accuracy</td>${cellPair(b.accuracy, c.accuracy)}</tr>`;
+  html += `<tr><td>Macro F1</td>${cellPair(b.macroF1, c.macroF1)}</tr>`;
+  html += `<tr><td>Weighted F1</td>${cellPair(b.weightedF1, c.weightedF1)}</tr>`;
+  html += `</tbody>`;
+  document.getElementById("metrics-table").innerHTML = html;
+})();
+
+// --- collapse check ---
+(function renderCollapse() {
+  const el = document.getElementById("collapse-row");
+  ["baseline", "context"].forEach(key => {
+    const cond = DATA.conditions[key];
+    const n = DATA.n;
+    const maxFrac = Math.max(...Object.values(cond.predDist)) / n;
+    const collapsed = maxFrac > 0.97 || Object.keys(cond.predDist).length === 1;
+    const label = key === "baseline" ? "Baseline" : "Context-engineered";
+    el.insertAdjacentHTML("beforeend", `
+      <div class="collapse-card">
+        <div class="icon" style="background:${collapsed ? "var(--critical)" : "var(--good)"}">${collapsed ? "!" : "✓"}</div>
+        <div class="txt"><b>${label}: ${collapsed ? "COLLAPSED" : "Not collapsed"}</b>
+        Top predicted class is ${pct(maxFrac)} of predictions.</div>
+      </div>
+    `);
+  });
+})();
+</script>
+</body>
+</html>

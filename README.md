@@ -1,5 +1,7 @@
 # Bug severity triage — context engineering experiment
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bmwelu12/bug-severity-context-eng/blob/main/bug_severity_context_eng.ipynb)
+
 Same question as the [ticket-triage LoRA project](https://github.com/bmwelu12/ticket-triage-lora-finetuning),
 approached a different way: instead of fine-tuning a model, this tests
 whether giving Claude **retrieved similar past examples** at inference time
@@ -23,6 +25,32 @@ A `fix_{train,test}.csv` pair also ships (is a bug slow to fix, >~100 days?)
 but `fix_train.csv` has no `Label` column, only a raw `Fixing_time` — the
 `fix` task isn't runnable until that's derived and isn't part of the result
 below.
+
+## What's genuinely tested vs. not
+
+- `01_data_prep.py` — an earlier draft of this pipeline cleaned raw CSVs
+  into `data/processed/*_clean.csv` before classification. The current
+  `02_retrieval.py`/`03_classify.py` read `data/raw/*.csv` directly, so
+  this script is **orphaned** — still in `scripts/`, not called by anything.
+- `02_retrieval.py` — run end-to-end against the real embeddings and real
+  training data (12,000 rows). Confirmed working: builds the `sev`
+  retriever and pickles it. Loops over `sev` then `fix`; without
+  `fix_train.csv`/`fix_test.csv` having a proper `Label` column it errors
+  on the `fix` half — expected, doesn't block `sev`.
+- `03_classify.py` — run for real against `claude-haiku-4-5`, real spend,
+  600 calls. The **first real run silently produced 0/600 valid
+  predictions**: Haiku wraps JSON replies in a ` ```json ` fence, and the
+  original `classify_one()` called `json.loads()` on the raw text
+  directly. Fixed to extract the `{...}` object first; the second run
+  parsed cleanly (0 failures) and produced the result above.
+- `04_eval.py` — run against the real corrected predictions; also
+  previously verified with synthetic majority-collapse and mixed
+  prediction sets to confirm the collapse check fires/doesn't fire
+  correctly.
+- `fix` task — not runnable as shipped: `fix_train.csv` has a raw
+  `Fixing_time` column but no `Label`, while `fix_test.csv` has both.
+  Deriving train's `Label` from `Fixing_time` would need the same
+  threshold that produced test's `Label`, which hasn't been verified.
 
 ## Data
 
@@ -52,21 +80,28 @@ the n=300 pass). Or run `bug_severity_context_eng.ipynb` in Colab.
 
 ## Real result (n=300, `--task sev`)
 
-|  | Accuracy | vs. 77.2% majority baseline | Recall: not severe | Recall: severe |
-|---|---|---|---|---|
-| Baseline | 75.3% | −1.9 pts | 0.740 | **0.792** |
-| Context-engineered | 80.3% | +3.1 pts | 0.830 | **0.727** |
+**[Open the full results page →](results.html)** (predicted-label
+distributions, confusion matrices, per-class precision/recall/F1, and the
+collapse-check verdict for both conditions, rendered from the actual run).
 
-Neither run collapsed to the majority class. But the result is mixed, not a
-clean win: context engineering raised overall accuracy by pushing the model
-to predict "not severe" more often (recall on that class rose 0.740 ->
-0.830) — which, because "not severe" is the majority class, mechanically
-improves accuracy. The cost is recall on the class that actually matters
-for triage: **severe-bug recall dropped from 0.792 to 0.727** under
-context. The retrieved neighbors are topically similar (cosine similarity
-0.97-1.00 regardless of label) but not reliably severity-similar, so the
-context sometimes nudges the model toward the topic cluster's typical
-severity rather than the true one — here, toward under-calling severity.
+| | not severe P / R / F1 | severe P / R / F1 | Accuracy | Macro F1 |
+|---|---|---|---|---|
+| Baseline | 91.2 / 74.0 / 81.7 | 51.3 / **79.2** / 62.2 | 75.3% | 72.0% |
+| Context-engineered | 89.8 / 83.0 / 86.3 | 59.6 / **72.7** / **65.5** | 80.3% | 75.9% |
+
+Neither run collapsed to the majority class (77.2% "not severe"). Reading
+past accuracy alone: context-engineering raised F1 on **both** classes
+(severe F1 62.2 → 65.5, not-severe F1 81.7 → 86.3) and raised overall
+accuracy 75.3% → 80.3% — a real, if modest, net positive on this sample.
+But it got there partly by calling "severe" less often: **severe-class
+recall dropped from 79.2% to 72.7%**, traded for a large precision gain
+(51.3% → 59.6%). For a bug-triage system, missing more actually-severe bugs
+to reduce false alarms is a real cost that the aggregate F1/accuracy
+numbers understate. The retrieved neighbors are topically similar (cosine
+similarity 0.97-1.00 regardless of label) but not reliably
+severity-similar, so context sometimes nudges the model toward the topic
+cluster's typical severity rather than the true one — here, toward
+under-calling severity on the margin.
 
 This was a 300-row first pass, not the full test set — treat the direction
 as suggestive, not final. Full `04_eval.py` output and raw predictions
