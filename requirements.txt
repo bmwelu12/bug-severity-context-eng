@@ -1,4 +1,6 @@
 pandas
+numpy
 scikit-learn
 anthropic
 tqdm
+gradio==5.9.1

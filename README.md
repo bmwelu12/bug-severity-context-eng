@@ -78,6 +78,30 @@ etc.) and write `artifacts/` (pickled retrievers) and `results/`
 Drop `--sample_size` to run the full 4,427-row test set (2x the API cost of
 the n=300 pass). Or run `bug_severity_context_eng.ipynb` in Colab.
 
+## Live demo
+
+`app.py` is a Gradio app (matching the [ticket-triage project](https://github.com/bmwelu12/ticket-triage-lora-finetuning)'s
+HF Space pattern): a "Try it live" tab where you paste a bug report and see
+baseline vs. context-engineered classification side by side with the actual
+retrieved neighbors, plus an "Eval dashboard" tab rendering the real
+`sev_eval_summary.json`. Tested locally end-to-end (real retriever, real
+Claude calls) — screenshots and a walkthrough are in the PR/commit history.
+
+To run locally:
+
+```bash
+pip install -r requirements.txt
+export ANTHROPIC_API_KEY=your_key_here
+python3 app.py
+```
+
+To deploy to a Hugging Face Space: create a Gradio Space, push this repo's
+contents to it (`app.py`, `requirements.txt`, and `data/raw/` — the retriever
+needs `sev_train.csv`, `embedding.npy`, `vocab.lst`; the dashboard tab needs
+`data/raw/results/sev_eval_summary.json`), and set `ANTHROPIC_API_KEY` under
+Settings → Repository secrets. Without that secret the "Try it live" tab
+still loads but shows a note instead of calling the API.
+
 ## Real result (n=300, `--task sev`)
 
 **[Open the full results page →](results.html)** (predicted-label
