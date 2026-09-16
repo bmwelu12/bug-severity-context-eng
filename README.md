@@ -2,11 +2,6 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bmwelu12/bug-severity-context-eng/blob/main/bug_severity_context_eng.ipynb)
 
-Same question as the [ticket-triage LoRA project](https://github.com/bmwelu12/ticket-triage-lora-finetuning),
-approached a different way: instead of fine-tuning a model, this tests
-whether giving Claude **retrieved similar past examples** at inference time
-(context engineering / lightweight RAG) beats giving it nothing.
-
 ## Task
 
 Binary classification on real Bugzilla bug reports: is a bug **severe**
