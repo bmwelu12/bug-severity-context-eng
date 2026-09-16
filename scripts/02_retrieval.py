@@ -1,93 +1,145 @@
 """
 02_retrieval.py
 
-Retrieval component: for a query bug description, find the k most similar
-bugs in the training set and return them along with their known labels.
-
-DEVIATION FROM ORIGINAL PLAN: rather than building TF-IDF from scratch, this
-uses the pre-trained 100-dim word embeddings that shipped with the dataset
-(embedding.npy + vocab.lst), trained on this exact corpus. A document vector
-is the mean of its in-vocabulary word vectors. Similarity is cosine.
-
-This is a better retrieval signal than a from-scratch TF-IDF would be, and
-it makes use of an asset that was already sitting in the data. It also means
-building the train-set doc-vector matrix once and reusing it, rather than
-searching in raw text space.
-
-Tested end-to-end against the real train/test data and real embeddings.
+Uses the provided 100-dim word embeddings (embedding.npy + vocab.lst) to
+build sentence-level representations via averaged word vectors, then does
+cosine-similarity retrieval over the training set. This uses real
+pre-trained embeddings rather than building TF-IDF from scratch, since
+they were already provided and are a more meaningful semantic
+representation than word-overlap counting.
 """
-import re
+
 import numpy as np
 import pandas as pd
+import re
 from pathlib import Path
+import pickle
 
-RAW_DIR = Path("data/raw")
-PROC_DIR = Path("data/processed")
-
-TOKEN_RE = re.compile(r"[a-zA-Z]+")
-
-
-def load_embeddings():
-    vocab = [w.strip() for w in open(RAW_DIR / "vocab.lst", encoding="utf-8")]
-    emb = np.load(RAW_DIR / "embedding.npy")
-    assert len(vocab) == emb.shape[0], "vocab/embedding row mismatch"
-    word2idx = {w: i for i, w in enumerate(vocab)}
-    return word2idx, emb
+ARTIFACT_DIR = Path("./artifacts")
+ARTIFACT_DIR.mkdir(exist_ok=True)
 
 
-def tokenize(text: str):
-    return [t.lower() for t in TOKEN_RE.findall(text)]
+def load_embeddings(vocab_path: str, embedding_path: str):
+    with open(vocab_path) as f:
+        vocab = [line.strip() for line in f]
+    embeddings = np.load(embedding_path)
+    assert len(vocab) == embeddings.shape[0], (
+        f"Vocab size {len(vocab)} does not match embedding rows {embeddings.shape[0]}"
+    )
+    word_to_idx = {w: i for i, w in enumerate(vocab)}
+    return word_to_idx, embeddings
 
 
-def doc_vector(text: str, word2idx, emb):
-    idxs = [word2idx[t] for t in tokenize(text) if t in word2idx]
-    if not idxs:
-        return np.zeros(emb.shape[1], dtype=np.float32)
-    return emb[idxs].mean(axis=0)
+def strip_boilerplate(text: str) -> str:
+    """
+    Bugzilla exports prepend a near-identical metadata header to every
+    report ("Created by X on <date>. Additional Details"), plus repeated
+    "Updated by..." lines for each comment. Left in, this boilerplate
+    dominates an averaged-embedding similarity score since it's shared
+    across almost every report, regardless of what the bug actually is.
+    Stripping it is necessary for retrieval to reflect bug content rather
+    than export formatting.
+    """
+    text = re.sub(r"Created by .*? PDT", "", text)
+    text = re.sub(r"Updated by .*? PDT", "", text)
+    text = re.sub(r"Additional Details", "", text)
+    text = re.sub(r"In reply to comment \d+", "", text)
+    return text
 
 
-def build_doc_matrix(descriptions, word2idx, emb):
-    mat = np.vstack([doc_vector(d, word2idx, emb) for d in descriptions])
-    # normalize for cosine similarity via dot product
-    norms = np.linalg.norm(mat, axis=1, keepdims=True)
-    norms[norms == 0] = 1.0
-    return mat / norms
+def tokenize(text: str) -> list:
+    return re.findall(r"[a-zA-Z']+", strip_boilerplate(text).lower())
 
 
-class Retriever:
-    def __init__(self, task: str = "sev"):
-        self.word2idx, self.emb = load_embeddings()
-        self.train = pd.read_csv(PROC_DIR / f"{task}_train_clean.csv")
-        self.label_col = "Severity" if task == "sev" else "Fixing_time"
-        self.train_matrix = build_doc_matrix(self.train["Description"].tolist(), self.word2idx, self.emb)
+def sentence_vector(text: str, word_to_idx: dict, embeddings: np.ndarray) -> np.ndarray:
+    """
+    Average word embedding over the tokens present in vocab. A reasonable
+    first thing to try before reaching for a heavier sentence-transformer
+    model, since it uses the embeddings already on hand.
+    """
+    tokens = tokenize(text)
+    vecs = [embeddings[word_to_idx[t]] for t in tokens if t in word_to_idx]
+    if not vecs:
+        return np.zeros(embeddings.shape[1])
+    return np.mean(vecs, axis=0)
 
-    def query(self, text: str, k: int = 3):
-        qvec = doc_vector(text, self.word2idx, self.emb)
-        norm = np.linalg.norm(qvec)
-        if norm > 0:
-            qvec = qvec / norm
-        sims = self.train_matrix @ qvec
-        top_idx = np.argsort(-sims)[:k]
+
+class BugRetriever:
+    def __init__(self, train_df: pd.DataFrame, word_to_idx: dict, embeddings: np.ndarray,
+                 text_col: str = "Description", label_col: str = "Label"):
+        self.train_df = train_df.reset_index(drop=True)
+        self.word_to_idx = word_to_idx
+        self.embeddings = embeddings
+        self.text_col = text_col
+        self.label_col = label_col
+
+        print(f"Building sentence vectors for {len(self.train_df):,} training bugs...")
+        self.doc_matrix = np.vstack([
+            sentence_vector(str(t), word_to_idx, embeddings) for t in self.train_df[text_col]
+        ])
+        norms = np.linalg.norm(self.doc_matrix, axis=1, keepdims=True)
+        norms[norms == 0] = 1
+        self.doc_matrix_norm = self.doc_matrix / norms
+
+    def retrieve(self, query_text: str, k: int = 3) -> list:
+        q_vec = sentence_vector(query_text, self.word_to_idx, self.embeddings)
+        q_norm = np.linalg.norm(q_vec)
+        if q_norm == 0:
+            return []
+        q_vec_norm = q_vec / q_norm
+
+        sims = self.doc_matrix_norm @ q_vec_norm
+        top_k_idx = np.argsort(sims)[::-1][:k]
+
         results = []
-        for i in top_idx:
-            row = self.train.iloc[i]
+        for idx in top_k_idx:
             results.append({
-                "similarity": float(sims[i]),
-                "description": row["Description"][:500],
-                "label_value": row[self.label_col],
-                "label": int(row["Label"]),
+                "text": self.train_df.iloc[idx][self.text_col],
+                "label": int(self.train_df.iloc[idx][self.label_col]),
+                "similarity": float(sims[idx]),
             })
         return results
 
+    def save(self, path):
+        with open(path, "wb") as f:
+            pickle.dump(self, f)
+
+    @staticmethod
+    def load(path):
+        with open(path, "rb") as f:
+            return pickle.load(f)
+
+
+def format_context_block(retrieved: list, label_names: dict) -> str:
+    if not retrieved:
+        return ""
+    lines = ["Similar past bugs and their actual outcome:\n"]
+    for i, r in enumerate(retrieved, 1):
+        snippet = str(r["text"])[:250].replace("\n", " ")
+        outcome = label_names.get(r["label"], str(r["label"]))
+        lines.append('{}. "{}..." -> {} (similarity: {:.2f})'.format(i, snippet, outcome, r["similarity"]))
+    return "\n".join(lines)
+
+
+def main():
+    word_to_idx, embeddings = load_embeddings(
+        "./vocab.lst",
+        "./embedding.npy",
+    )
+    print(f"Loaded embeddings: {embeddings.shape[0]:,} words, {embeddings.shape[1]} dims")
+
+    for task in ["sev", "fix"]:
+        train_df = pd.read_csv(f"./{task}_train.csv")
+        retriever = BugRetriever(train_df, word_to_idx, embeddings)
+        retriever.save(ARTIFACT_DIR / f"{task}_retriever.pkl")
+        print(f"Saved {task} retriever to {ARTIFACT_DIR}/{task}_retriever.pkl")
+
+        sample = train_df.iloc[0]["Description"]
+        results = retriever.retrieve(sample, k=3)
+        label_names = {0: "not severe", 1: "severe"} if task == "sev" else {0: "fast fix", 1: "slow fix"}
+        print(format_context_block(results, label_names))
+        print()
+
 
 if __name__ == "__main__":
-    # Real smoke test against real data: pull a handful of test examples
-    # and confirm retrieval returns sensible, similar-looking neighbors.
-    retriever = Retriever(task="sev")
-    test = pd.read_csv(PROC_DIR / "sev_test_clean.csv").sample(3, random_state=1)
-    for _, row in test.iterrows():
-        print("=" * 80)
-        print("QUERY:", row["Description"][:200])
-        print("true label:", row["Label"], "(severity:", row["Severity"], ")")
-        for r in retriever.query(row["Description"], k=3):
-            print(f"  sim={r['similarity']:.3f} label={r['label']} ({r['label_value']}) :: {r['description'][:150]}")
+    main()

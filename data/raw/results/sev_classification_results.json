@@ -1,0 +1,4802 @@
+[
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 493.74914169311523,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 1763.0329132080078,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```\n\nThis bug report describes a SEVERE issue because:\n\n1. **Core functionality broken**: Shockwave content doesn't play at all on the Macromedia website across multiple platforms (Win95, 98, 2000, NT, and MacOS)\n\n2. **Browser crashes**: Shockwave Flash content causes browser crashes after some time\n\n3. **Plugin incompatibility**: The Netscape plugin",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 681.1206340789795,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 591.5627479553223,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 631.8132877349854,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 681.5111637115479,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 522.9730606079102,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 645.5264091491699,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 618.2830333709717,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 536.7326736450195,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 626.8560886383057,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 1718.4205055236816,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```\n\nThe bug report describes a SEVERE issue because:\n\n1. **Regression**: It explicitly states \"Major regression since this has been supported since 1.1\" - indicating functionality that previously worked is now broken\n2. **Cross-platform inconsistency**: The feature works on Windows and Japanese systems but fails on English Mac systems, suggesting a systemic problem\n3. **Affects multiple features**: The issue extends beyond Mail",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 697.3814964294434,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 475.15153884887695,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 647.5038528442383,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 562.1659755706787,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 531.6174030303955,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 654.630184173584,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 611.5193367004395,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 653.6462306976318,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 662.4531745910645,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 620.9189891815186,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 1821.974277496338,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```\n\nThis bug report describes an application crash that occurs in a specific but reproducible scenario (opening Address Book, creating new mail composition, and selecting addresses). Despite some developers marking it as \"WORKSFORME,\" the core issue involves:\n\n1. **Application crash** - explicit mention of the application crashing\n2. **Specific reproducible steps** - can be reliably triggered through Address Book\n3. **JavaScript exceptions and",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 1494.1682815551758,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```\n\nThe bug report describes a visual/UI issue (missing scrollbars) that was quickly identified and fixed. While scrollbars are important for usability, this appears to be a straightforward cosmetic/layout issue with a known cause (chrome registry) and a confirmed fix, rather than a critical system failure or data loss issue.",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 1042.8845882415771,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```\n\nThe bug report describes a crash when performing a common user action (pasting a proxy address in preferences). Application crashes are typically considered severe/critical issues as they result in loss of functionality and poor user experience.",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 474.900484085083,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 592.076301574707,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 563.4610652923584,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 547.4176406860352,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 493.58201026916504,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 543.0989265441895,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 533.4455966949463,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 668.302059173584,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 405.2705764770508,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 567.307710647583,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 442.8102970123291,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 591.8540954589844,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 536.88645362854,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 582.9763412475586,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 655.2324295043945,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 465.0142192840576,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 689.3784999847412,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 658.4427356719971,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 646.0788249969482,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 551.2337684631348,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 619.0838813781738,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 662.9550457000732,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 731.4877510070801,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 612.3313903808594,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 563.7543201446533,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 509.91082191467285,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 720.0915813446045,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 468.6577320098877,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 564.3482208251953,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 552.4370670318604,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 640.7816410064697,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 635.9314918518066,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 1308.1450462341309,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```\n\nThis bug report describes a critical issue where recursive function calls in Rhino's JavaScript interpreter incorrectly overwrite the `this` object context, causing nested function calls to return wrong results. The bug affects core language semantics and produces incorrect output, making it a severe issue.",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 1591.0065174102783,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```\n\n**Reasoning:** This bug report describes a cosmetic/UI issue where the URL bar doesn't update visually when clicking links in the personal toolbar. The underlying functionality works (the links open correctly), but the display doesn't reflect the change. Additionally, the bug has been marked as VERIFIED Invalid and fixed in a later build, indicating it was a minor issue that has already been resolved. This is",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 632.4105262756348,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 460.9522819519043,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 615.6730651855469,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 724.6427536010742,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 648.1137275695801,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 520.7784175872803,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 510.1637840270996,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 479.3708324432373,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 606.1034202575684,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 535.0215435028076,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 569.6864128112793,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 687.0818138122559,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 559.9262714385986,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 487.99586296081543,
+    "raw_response": "```json\n{\n  \"prediction\": \"severe\"\n}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 449.94091987609863,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 618.7093257904053,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 584.1915607452393,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 604.3245792388916,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 1031.064748764038,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```\n\nThe bug report describes a crash (\"dumps core\") when attempting to start Mozilla after creating a profile in an invalid directory. Core dumps indicate a critical application failure, making this a severe issue.",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 540.6420230865479,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 437.06679344177246,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 1014.3818855285645,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 530.0874710083008,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 481.2006950378418,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 666.6734218597412,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 478.3945083618164,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 493.2520389556885,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 633.796215057373,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 1510.878562927246,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 550.8773326873779,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 635.7097625732422,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 649.5442390441895,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 719.2583084106445,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 472.9573726654053,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 615.1783466339111,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 754.2412281036377,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 576.7266750335693,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 607.0806980133057,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 499.00221824645996,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 668.6515808105469,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 613.7502193450928,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 619.6296215057373,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 795.9752082824707,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 858.1836223602295,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 693.0534839630127,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 627.0923614501953,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 933.391809463501,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 556.2262535095215,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 553.7838935852051,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 860.6259822845459,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 626.9946098327637,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 525.428056716919,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 721.3072776794434,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 576.2691497802734,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 492.1433925628662,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 531.8121910095215,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 616.2993907928467,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 641.7970657348633,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 566.5197372436523,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 611.9663715362549,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 600.4624366760254,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 742.0520782470703,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 592.0984745025635,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 525.1803398132324,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 683.5687160491943,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 643.3746814727783,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 609.8473072052002,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 469.29478645324707,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 655.7350158691406,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 560.8272552490234,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 600.1999378204346,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 624.9022483825684,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 458.6336612701416,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 637.2437477111816,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 622.4160194396973,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 643.6483860015869,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 628.3977031707764,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 665.6191349029541,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 579.5807838439941,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 616.1413192749023,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 529.6738147735596,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 638.4181976318359,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 481.4035892486572,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 705.5611610412598,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 526.5343189239502,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 528.7017822265625,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 458.42862129211426,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 543.2596206665039,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 647.1986770629883,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 604.1498184204102,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 665.3923988342285,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 630.3765773773193,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 536.6578102111816,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 600.7575988769531,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 672.3301410675049,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 493.12472343444824,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 1841.0727977752686,
+    "raw_response": "```json\n{\n  \"prediction\": \"severe\"\n}\n```\n\nThe bug describes a critical issue where form submission is not being prevented by JavaScript's `return false` statement in an `onSubmit` handler. Instead of showing an alert dialog, the form is being submitted anyway, causing unwanted data to be sent to the server. This is a significant functional defect affecting form handling - a core web feature - and could have data integrity consequences.",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 566.2434101104736,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 559.0684413909912,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 511.12961769104004,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 532.5324535369873,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 595.672607421875,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 493.24536323547363,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 543.2517528533936,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 622.4768161773682,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 614.4628524780273,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 591.0041332244873,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 524.1637229919434,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 512.4776363372803,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 625.601053237915,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 582.8168392181396,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 2593.486785888672,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```\n\nThis bug report describes an issue where users have to re-enter login credentials frequently due to cookie-related problems. While inconvenient, it's marked as a duplicate of another bug (20122) and has been resolved. The issue doesn't describe data loss, security breach, system crash, or complete feature failure\u2014just authentication persistence problems. Additionally, the resolution indicates it's a known duplicate issue rather",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 465.50559997558594,
+    "raw_response": "```json\n{\n  \"prediction\": \"severe\"\n}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 428.070068359375,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 587.7881050109863,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 516.8945789337158,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 538.2733345031738,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 644.8752880096436,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 618.7424659729004,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 667.7334308624268,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 410.5823040008545,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 498.9349842071533,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 498.09765815734863,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 667.7677631378174,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 803.0970096588135,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 438.7097358703613,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 711.6634845733643,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 554.7041893005371,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 629.486083984375,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 1676.2163639068604,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```\n\nThe bug report describes a SEVERE issue because:\n\n1. **Complete application freeze**: Both Messenger and Navigator windows become \"completely unresponsive\" with no activity\n2. **High frequency**: Occurs \"3 times in 2 hours\" and \"at least 20% of the time\"\n3. **Critical severity designation**: The reporter explicitly states \"changing to critical severity, putting on dogfood",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 622.9135990142822,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 531.219482421875,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 606.6052913665771,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 506.070613861084,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 827.3124694824219,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 508.4257125854492,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 620.9371089935303,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 622.8437423706055,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 514.6102905273438,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 567.0371055603027,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 597.4440574645996,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 645.4014778137207,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 737.0247840881348,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 566.0221576690674,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 520.6401348114014,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 538.0942821502686,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 767.0741081237793,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 544.8830127716064,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 522.9876041412354,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 4694.627046585083,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 682.1699142456055,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 762.4142169952393,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 530.695915222168,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 510.21432876586914,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 550.8654117584229,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 628.875732421875,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 515.2482986450195,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 571.0310935974121,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 652.9054641723633,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 636.6639137268066,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 650.3078937530518,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 718.7371253967285,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 637.4683380126953,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 640.7680511474609,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 633.6629390716553,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 630.1431655883789,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 637.2697353363037,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 622.0736503601074,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 649.0602493286133,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 520.1358795166016,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 602.971076965332,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 608.7324619293213,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 552.8059005737305,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 518.2104110717773,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 612.4906539916992,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 550.1708984375,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 651.5097618103027,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 461.5345001220703,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 522.1085548400879,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 679.5403957366943,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 649.4848728179932,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 610.8152866363525,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 1433.208703994751,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```\n\nThe bug report concludes that this is a **server problem, not a client bug**. The issue is that the server is sending an incorrect HTTP Content-Type header (`application/octet-stream` instead of `text/html`). This is a configuration issue on the server side, and a workaround exists (adding `index.jhtml` to the URL). While it may cause functionality issues, it's",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 642.6622867584229,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 624.4385242462158,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 553.1249046325684,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 576.0538578033447,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 638.1649971008301,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 517.1511173248291,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 534.0750217437744,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 648.0181217193604,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 601.9086837768555,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 635.5156898498535,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 615.1726245880127,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 538.4166240692139,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 500.07152557373047,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 687.8983974456787,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 585.0167274475098,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 518.512487411499,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 620.5406188964844,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 564.9287700653076,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 626.3561248779297,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 589.4219875335693,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 584.815502166748,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 669.013500213623,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 603.8651466369629,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 513.1521224975586,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 510.0247859954834,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 762.160062789917,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 649.1694450378418,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 666.2778854370117,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 566.2109851837158,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 493.01624298095703,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 674.1337776184082,
+    "raw_response": "```json\n{\n  \"prediction\": \"severe\"\n}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 518.3627605438232,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 613.9674186706543,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 541.8388843536377,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 881.2112808227539,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 520.6856727600098,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 649.3918895721436,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 530.6229591369629,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 1522.9177474975586,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```\n\nThe bug report describes a critical user-facing issue where the Editor window fails to load when accessed from the Tasks menu on Mac, requiring users to wait indefinitely or use workarounds. While the issue appears intermittent and may have been resolved in later builds, the core problem\u2014an application window hanging and never fully loading\u2014represents a major functionality blocker that would significantly impact user experience.",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 568.2544708251953,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 686.6743564605713,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 894.7241306304932,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 627.6144981384277,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 704.9305438995361,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 552.8616905212402,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 602.4653911590576,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 1013.3492946624756,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 732.9776287078857,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 610.3014945983887,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 461.66205406188965,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 1636.972188949585,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```\n\nThe bug report describes a crash (application termination) that occurs when trying to dynamically add menu elements via JavaScript at runtime. The stack trace shows the crash happening during frame size calculation, and the reporter explicitly states \"we crash.\" Crashes are typically classified as severe/critical issues as they represent a complete failure of functionality and poor user experience.",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 480.64255714416504,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 628.0195713043213,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 594.9118137359619,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 559.9923133850098,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 548.3360290527344,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 470.42036056518555,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```",
+    "true_label": "not severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 565.1979446411133,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "baseline"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 793.9846515655518,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 755.1953792572021,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 1351.9880771636963,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 655.2255153656006,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 1364.450454711914,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```\n\nThe bug report describes a memory leak of over 200KB when loading a single website (www.oracle.com), with 43 nsSocketTransport objects and 43 nsHTTPPipelinedRequest objects leaking. This is a significant resource issue that would materially impact performance and stability, especially with repeated use. Combined with the similar past bugs showing that reference counting issues can be critical (bug #2",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 708.1806659698486,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 626.8825531005859,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 545.2404022216797,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 446.2389945983887,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 618.5288429260254,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 601.1149883270264,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 709.0404033660889,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 532.24778175354,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 633.3329677581787,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 481.0624122619629,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 678.4164905548096,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 568.7074661254883,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 1004.0318965911865,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 605.4744720458984,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 635.8804702758789,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 641.5579319000244,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 632.8392028808594,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 648.8001346588135,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 571.0687637329102,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 762.413740158081,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 641.9200897216797,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 589.6377563476562,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 582.6091766357422,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 559.7655773162842,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 595.3030586242676,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 516.1433219909668,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 640.1314735412598,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 595.6318378448486,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 575.3183364868164,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 541.9046878814697,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 633.7480545043945,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 634.657621383667,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 496.64831161499023,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 654.8995971679688,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 443.4998035430908,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 656.3882827758789,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 642.4586772918701,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 542.4060821533203,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 527.719259262085,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 561.7341995239258,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 673.612117767334,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 567.0809745788574,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 551.8951416015625,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 609.7309589385986,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 639.991283416748,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 660.4504585266113,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 621.3366985321045,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 663.8226509094238,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 656.3560962677002,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 643.7594890594482,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 1132.3564052581787,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 655.4234027862549,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 630.71608543396,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 569.9863433837891,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 610.5153560638428,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 457.7500820159912,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 522.9802131652832,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 650.6474018096924,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 1751.1382102966309,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```\n\nThe bug describes a cosmetic/UI issue with scrollbars being enabled when they shouldn't be. It's a minor visual glitch that was ultimately caused by a CSS hack and was fixed without significant impact. This aligns with the pattern of the first two similar cases which were also not severe (column spacing and image rendering gaps), whereas the severe case involved actual broken functionality (compose window being blank/",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 633.277416229248,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 521.8579769134521,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 512.2697353363037,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 623.7087249755859,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 617.3117160797119,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 569.324254989624,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 445.90258598327637,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 555.9146404266357,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 630.1484107971191,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 637.9854679107666,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 831.1593532562256,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 599.8015403747559,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 537.5804901123047,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 471.32420539855957,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 673.5930442810059,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 446.05135917663574,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 542.4354076385498,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 562.2363090515137,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 675.5297183990479,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 530.4319858551025,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 709.5193862915039,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 791.7773723602295,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 628.2310485839844,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 547.1854209899902,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 665.8785343170166,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 584.9604606628418,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 439.61381912231445,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 645.8184719085693,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 620.621919631958,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 561.8996620178223,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 727.8885841369629,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 634.0727806091309,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 565.5581951141357,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 624.8948574066162,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 646.5375423431396,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 615.3688430786133,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 512.8910541534424,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 542.6990985870361,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 651.4022350311279,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 843.6329364776611,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 548.5825538635254,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 673.9892959594727,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 740.2009963989258,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 536.1747741699219,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 699.9220848083496,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 488.1854057312012,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 503.7081241607666,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 667.6352024078369,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 551.1455535888672,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 530.487060546875,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 639.9564743041992,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 520.6897258758545,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 661.0596179962158,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 570.8408355712891,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 571.1202621459961,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 676.2802600860596,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 844.6886539459229,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 553.6458492279053,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 518.7859535217285,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 595.3741073608398,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 659.2051982879639,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 529.2258262634277,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 1023.6599445343018,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 542.4802303314209,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 568.0363178253174,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 778.2528400421143,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 922.38450050354,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 623.3351230621338,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 1730.1719188690186,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```\n\nThe bug report describes a UI display issue with the message pane in a mail client where toggling the \"View Message\" menu item doesn't properly hide/show the message pane on first toggle. However, the issue was resolved by the time of verification (\"Problem no longer exists\" and \"Marking this verified worksforme\"), indicating it was either a transient issue or quickly fixed. This al",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 624.2954730987549,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 508.85701179504395,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 515.9018039703369,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 516.8030261993408,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 603.9657592773438,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 561.5108013153076,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 545.5443859100342,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 557.1444034576416,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 538.5606288909912,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 501.18279457092285,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 497.50280380249023,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 444.2458152770996,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 650.8522033691406,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 622.1065521240234,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 649.9321460723877,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 637.7348899841309,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 599.916934967041,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 504.9464702606201,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 1603.6853790283203,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 632.8225135803223,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 749.8526573181152,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 757.5101852416992,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 636.9056701660156,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 538.8717651367188,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 479.78687286376953,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 631.0708522796631,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 555.2706718444824,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 627.6719570159912,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 531.4767360687256,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 505.43904304504395,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 846.7857837677002,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 647.6461887359619,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 664.8106575012207,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 548.8665103912354,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 579.2317390441895,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 668.4374809265137,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 635.8859539031982,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 569.9262619018555,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 531.3141345977783,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 557.342529296875,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 542.2713756561279,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 593.3704376220703,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 528.8636684417725,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 668.2398319244385,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 759.5465183258057,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 688.8937950134277,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 760.1823806762695,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 568.4957504272461,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 531.6102504730225,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 506.9849491119385,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 1539.26420211792,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```\n\nThe bug report describes a cosmetic issue with background color rendering (grey instead of yellow) caused by invalid HTML syntax (missing `#` in color code). The developers marked it as \"wontfix\" because it's due to malformed HTML in strict mode. This aligns with the similar past bugs which all involve minor rendering/styling issues and were classified as \"not severe.\"",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 631.0610771179199,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 540.961503982544,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 556.9703578948975,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 702.4028301239014,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 561.5596771240234,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 589.2946720123291,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 668.7002182006836,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 468.6722755432129,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 652.0543098449707,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 521.9533443450928,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 464.6008014678955,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 612.9937171936035,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 635.9877586364746,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 596.595287322998,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 634.8249912261963,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 730.0667762756348,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 624.9392032623291,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 643.4035301208496,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 540.5592918395996,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 443.90249252319336,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 606.6415309906006,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 659.0793132781982,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 517.1377658843994,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 545.4363822937012,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 540.1921272277832,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 570.3873634338379,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 529.2115211486816,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 549.6954917907715,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 556.260347366333,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 636.0821723937988,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 523.1573581695557,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 538.9328002929688,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 501.37877464294434,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 659.4967842102051,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 981.8115234375,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 548.2795238494873,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 616.3158416748047,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 538.5510921478271,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 565.9663677215576,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 555.6731224060059,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 638.0581855773926,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 1043.7672138214111,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 628.6625862121582,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 445.65820693969727,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 598.4294414520264,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 565.8402442932129,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 2989.5708560943604,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 471.54927253723145,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 529.212236404419,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 544.7824001312256,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 643.5806751251221,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 687.9982948303223,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 519.2570686340332,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 579.4486999511719,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 528.3193588256836,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 700.6714344024658,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 595.2858924865723,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 2484.4393730163574,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 683.2375526428223,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 499.2842674255371,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 633.3980560302734,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 596.3888168334961,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 671.2005138397217,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 514.6710872650146,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 472.29886054992676,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 479.53081130981445,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 2049.713611602783,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```\n\nThe bug report describes a NULL pointer dereference crash (dereferencing a NULL nsComPtr) that occurs across multiple platforms (win32 and linux) in the event handling system. The crash happens in core rendering/presentation shell code and includes a full stack trace showing the crash propagates through multiple layers of event handling. The reporter indicates they have a patch but acknowledges it's \"not the best fix,\" and the bug",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 517.8046226501465,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 741.2590980529785,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 612.816572189331,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 644.5300579071045,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 671.1511611938477,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 573.1713771820068,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 673.5241413116455,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 543.4916019439697,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 585.6356620788574,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 526.0777473449707,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 569.37575340271,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 567.2414302825928,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 468.8231945037842,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 615.1392459869385,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 560.7080459594727,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 473.203182220459,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 731.4987182617188,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 652.8916358947754,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 518.9645290374756,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 617.2616481781006,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 530.646800994873,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 528.3548831939697,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 535.0453853607178,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 611.0286712646484,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 622.5094795227051,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 544.6443557739258,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 681.4785003662109,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 529.9215316772461,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 470.090389251709,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 689.2554759979248,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 495.31054496765137,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 521.8372344970703,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 604.1436195373535,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 649.3110656738281,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 634.8652839660645,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 521.6317176818848,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 577.7404308319092,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 681.8995475769043,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 785.2234840393066,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 511.57188415527344,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 576.4493942260742,
+    "raw_response": "```json\n{\n  \"prediction\": \"not severe\"\n}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 1896.7320919036865,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```\n\nThe bug report describes a crash condition that occurs when trying to use dynamically added menuitems in XUL. The reporter explicitly states \"we crash\" and provides a detailed stack trace showing the crash path. The issue occurs during a common operation (runtime menu population), and the crash happens in a null pointer dereference scenario. This matches the pattern of the similar bugs #2 and #3, which were classified as severe",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 672.4958419799805,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "severe",
+    "parse_failed": false,
+    "latency_ms": 557.3017597198486,
+    "raw_response": "```json\n{\"prediction\": \"severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 646.9888687133789,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 582.7248096466064,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 532.5353145599365,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 631.4108371734619,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "not severe",
+    "condition": "context_engineered"
+  },
+  {
+    "prediction": "not severe",
+    "parse_failed": false,
+    "latency_ms": 515.8493518829346,
+    "raw_response": "```json\n{\"prediction\": \"not severe\"}\n```",
+    "true_label": "severe",
+    "condition": "context_engineered"
+  }
+]

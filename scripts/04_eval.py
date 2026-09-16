@@ -1,77 +1,106 @@
 """
 04_eval.py
 
-Same eval methodology as the ticket triage project: per-class precision/
-recall/F1 (not just overall accuracy), and an explicit check for collapse
-to the majority class. Compares baseline vs. context-engineered predictions
-if both are present.
+Evaluate baseline vs. context-engineered classification against the real
+majority-class baselines in this dataset:
 
-Tested against real severity labels using synthetic prediction files
-(a majority-class-collapse case and a genuinely mixed case) to confirm
-the collapse check actually fires when it should and stays quiet when
-predictions are reasonably distributed.
+  severity:  77.2% of test bugs are "not severe"
+  fix-time:  79.4% of test bugs are "fast fix"
+
+Any reported accuracy near those numbers, on either condition, is a
+warning sign that the model is defaulting to the majority class rather
+than genuinely discriminating; the exact failure mode the ticket triage
+project's eval harness caught.
 """
+
+import json
 import argparse
-import pandas as pd
 from pathlib import Path
-from sklearn.metrics import precision_recall_fscore_support, confusion_matrix
+from sklearn.metrics import classification_report
 
-PROC_DIR = Path("data/processed")
+RESULTS_DIR = Path("./results")
+
+MAJORITY_BASELINES = {
+    "sev": 0.7723,
+    "fix": 0.7935,
+}
 
 
-def evaluate(df: pd.DataFrame, name: str):
-    y_true = df["true_label"]
-    y_pred = df["pred_label"]
+def load_results(task: str) -> list:
+    with open(RESULTS_DIR / f"{task}_classification_results.json") as f:
+        return json.load(f)
 
-    unparsed = (y_pred == -1).sum()
-    valid = df[df["pred_label"] != -1]
 
-    precision, recall, f1, support = precision_recall_fscore_support(
-        valid["true_label"], valid["pred_label"], labels=[0, 1], zero_division=0
-    )
-    cm = confusion_matrix(valid["true_label"], valid["pred_label"], labels=[0, 1])
-    pred_dist = valid["pred_label"].value_counts(normalize=True).to_dict()
+def evaluate_condition(results: list, condition: str, majority_baseline: float) -> dict:
+    subset = [r for r in results if r["condition"] == condition and not r["parse_failed"]]
+    if not subset:
+        print(f"  No valid (non-parse-failed) results for {condition}")
+        return {}
 
-    print(f"\n=== {name} ===")
-    print(f"n={len(df)} (unparsed responses: {unparsed})")
-    print(f"Predicted label distribution: {pred_dist}")
-    print(f"Confusion matrix [rows=true, cols=pred] 0/1:\n{cm}")
-    for label, p, r, f, s in zip([0, 1], precision, recall, f1, support):
-        print(f"  class {label}: precision={p:.3f} recall={r:.3f} f1={f:.3f} support={s}")
+    y_true = [r["true_label"] for r in subset]
+    y_pred = [r["prediction"] for r in subset]
 
-    # collapse check: did the model just predict the majority class every time?
-    majority_frac = max(pred_dist.values()) if pred_dist else 0
-    collapsed = majority_frac > 0.97 or (len(pred_dist) == 1)
-    print(f"COLLAPSE CHECK: {'*** COLLAPSED to majority class ***' if collapsed else 'not collapsed'} "
-          f"(top predicted class = {majority_frac:.1%} of predictions)")
-    return {"name": name, "f1": f1, "collapsed": collapsed}
+    report = classification_report(y_true, y_pred, output_dict=True, zero_division=0)
+    accuracy = report["accuracy"]
+
+    print(f"\n{'='*60}")
+    print(f"{condition.upper()}")
+    print(f"{'='*60}")
+    print(f"  Accuracy: {accuracy:.1%}")
+    print(f"  Majority-class baseline for this task: {majority_baseline:.1%}")
+
+    diff = accuracy - majority_baseline
+    if diff <= 0.02:
+        print(f"  WARNING: accuracy is within 2 points of the majority baseline.")
+        print(f"  This model may not be discriminating at all, check per-class recall below.")
+    else:
+        print(f"  Beats majority baseline by {diff:.1%}, a genuine signal worth trusting more.")
+
+    print(f"\n  Per-class recall:")
+    for label, metrics in report.items():
+        if label in ("accuracy", "macro avg", "weighted avg"):
+            continue
+        recall = metrics["recall"]
+        flag = " <- never predicted, collapsed" if recall == 0.0 else \
+               " <- WARNING: may be defaulting here" if recall > 0.95 else ""
+        print(f"    {label}: recall = {recall:.3f}{flag}")
+
+    parse_fail_rate = sum(1 for r in results if r["condition"] == condition and r["parse_failed"]) / \
+        len([r for r in results if r["condition"] == condition])
+    mean_latency = sum(r["latency_ms"] for r in subset) / len(subset)
+    print(f"\n  Parse failure rate: {parse_fail_rate:.1%}")
+    print(f"  Mean latency: {mean_latency:.0f}ms")
+
+    return report
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--task", default="sev")
+    parser.add_argument("--task", choices=["sev", "fix"], default="sev")
     args = parser.parse_args()
 
-    baseline_path = PROC_DIR / f"{args.task}_baseline_predictions.csv"
-    context_path = PROC_DIR / f"{args.task}_context_predictions.csv"
+    results = load_results(args.task)
+    majority_baseline = MAJORITY_BASELINES[args.task]
 
-    results = []
-    if baseline_path.exists():
-        results.append(evaluate(pd.read_csv(baseline_path), "BASELINE (no retrieval)"))
-    if context_path.exists():
-        results.append(evaluate(pd.read_csv(context_path), "CONTEXT-ENGINEERED (with retrieval)"))
+    baseline_report = evaluate_condition(results, "baseline", majority_baseline)
+    context_report = evaluate_condition(results, "context_engineered", majority_baseline)
 
-    if len(results) == 2:
-        print("\n=== COMPARISON ===")
-        b, c = results
-        print(f"Baseline class-1 (severe) F1: {b['f1'][1]:.3f}")
-        print(f"Context  class-1 (severe) F1: {c['f1'][1]:.3f}")
-        if b["collapsed"] and not c["collapsed"]:
-            print("Retrieval context appears to have fixed a majority-class collapse.")
-        elif b["collapsed"] and c["collapsed"]:
-            print("Retrieval context did NOT fix the collapse — still defaulting to majority class.")
-        elif not b["collapsed"] and not c["collapsed"]:
-            print("Neither run collapsed; compare F1 to see if context helped at the margin.")
+    print(f"\n{'='*60}")
+    print("HONEST VERDICT")
+    print(f"{'='*60}")
+    if baseline_report and context_report:
+        base_acc = baseline_report.get("accuracy", 0)
+        ctx_acc = context_report.get("accuracy", 0)
+        print(f"Baseline accuracy: {base_acc:.1%} (majority baseline: {majority_baseline:.1%})")
+        print(f"Context-engineered accuracy: {ctx_acc:.1%}")
+        print(f"Change from context: {ctx_acc - base_acc:+.1%}")
+        print("\nCheck the per-class recall above for both conditions, not just this")
+        print("summary. A model can improve overall accuracy while still collapsing")
+        print("on one or more classes, the exact pattern that mattered last time.")
+
+    with open(RESULTS_DIR / f"{args.task}_eval_summary.json", "w") as f:
+        json.dump({"baseline": baseline_report, "context_engineered": context_report}, f, indent=2)
+    print(f"\nFull reports saved to {RESULTS_DIR}/{args.task}_eval_summary.json")
 
 
 if __name__ == "__main__":

@@ -3,105 +3,77 @@
 Same question as the [ticket-triage LoRA project](https://github.com/bmwelu12/ticket-triage-lora-finetuning),
 approached a different way: instead of fine-tuning a model, this tests
 whether giving Claude **retrieved similar past examples** at inference time
-(context engineering / lightweight RAG) beats giving it nothing, using the
-same eval discipline — per-class precision/recall/F1, not just accuracy,
-and an explicit check for collapse to the majority class.
+(context engineering / lightweight RAG) beats giving it nothing.
 
 ## Task
 
 Binary classification on real Bugzilla bug reports: is a bug **severe**
 (blocker/critical/major) or **not severe** (minor/normal/trivial)? Class
-split is roughly 76/24, so overall accuracy alone is a bad signal — a model
-that always predicts "not severe" already scores ~76%.
+split is 77.2% / 22.8% in the test set, so overall accuracy alone is a bad
+signal — a model that always predicts "not severe" already scores 77.2%.
 
-- `--mode baseline`: the model sees only the raw bug description.
-- `--mode context`: the model also sees the top-k most similar past bugs
-  (retrieved via pre-trained word embeddings) and how they were actually
-  labeled.
+`03_classify.py` runs both conditions on the same sample in one invocation:
 
-## What's tested vs. not (as of the initial build)
+- **baseline**: the model sees only the raw bug description.
+- **context_engineered**: the model also sees the top-3 most similar past
+  bugs (retrieved via pre-trained word embeddings) and how they were
+  actually labeled.
 
-- `01_data_prep.py` — run against the real CSVs, output verified (27,998
-  train / 4,427 test rows, label balance printed and matches source data).
-- `02_retrieval.py` — run end-to-end against real embeddings and real test
-  descriptions. Retrieved neighbors are topically similar (same feature
-  area) but similarity scores are uniformly high (0.97-0.99) and don't
-  track severity well — one query labeled "blocker" pulled back a "normal"
-  neighbor. Worth watching for in the eval: mean-pooled embeddings capture
-  topic, not severity, so the context-engineered run might not help much.
-- `03_classify.py` — prompt construction, retrieval hookup, and CSV output
-  verified with `--dry-run` (mocked responses, no API calls). Actual model
-  behavior on real data needs a real `ANTHROPIC_API_KEY` and real spend —
-  **not yet run**.
-- `04_eval.py` — verified against real test labels with synthetic
-  prediction sets (a forced majority-class collapse, correctly flagged;
-  a noisy-but-mixed set, correctly not flagged).
-
-This mirrors the LoRA project's workflow: the heavy/paid execution
-(real API calls against the full test set) happens outside a chat session,
-in the notebook, with your own key.
+A `fix_{train,test}.csv` pair also ships (is a bug slow to fix, >~100 days?)
+but `fix_train.csv` has no `Label` column, only a raw `Fixing_time` — the
+`fix` task isn't runnable until that's derived and isn't part of the result
+below.
 
 ## Data
 
-`data/raw/*.csv` and `data/raw/*.npy` are tracked with **Git LFS** (see
-`.gitattributes`) since `embedding.npy` and the CSVs run up to ~65MB —
-past what's comfortable in a normal git blob. `vocab.lst` is small enough
-to commit as a plain text file. You need these files in `data/raw/`:
-
-- `sev_train.csv`, `sev_test.csv` — pre-split bug reports with `Description`,
-  `Severity`, `Label` columns.
-- `embedding.npy`, `vocab.lst` — a pre-trained 100-dim word embedding table
-  fit on this corpus, used by the retriever (mean-pooled doc vectors,
-  cosine similarity) instead of building TF-IDF from scratch.
-
-To pull the real LFS content after cloning:
-
-```bash
-git lfs install   # once per machine
-git clone https://github.com/bmwelu12/bug-severity-context-eng.git
-cd bug-severity-context-eng
-git lfs pull
-```
-
-To add or update the raw data yourself:
-
-```bash
-git lfs install
-cp /path/to/sev_train.csv /path/to/sev_test.csv \
-   /path/to/embedding.npy /path/to/vocab.lst data/raw/
-git add data/raw/
-git commit -m "Add raw Bugzilla severity data via Git LFS"
-git push origin main
-```
-
-`.gitattributes` already marks `*.csv` and `*.npy` under `data/raw/` for
-LFS, so `git add` routes them through the LFS filter automatically as
-long as `git lfs install` has been run at least once on your machine.
+`data/raw/` holds `sev_train.csv`, `sev_test.csv`, `fix_train.csv`,
+`fix_test.csv` (all with a `Description` column, ~9-25MB each), plus
+`embedding.npy` (100-dim word embeddings pre-trained on this corpus,
+~18.5MB) and `vocab.lst`. All committed as plain files — none of them are
+close to GitHub's 100MB limit, so Git LFS isn't needed here.
 
 ## How to run
 
 ```bash
 pip install -r requirements.txt
-export ANTHROPIC_API_KEY=your_key_here
+export ANTHROPIC_API_KEY=your_key_here   # needs workspace-scoped access
 
-python3 scripts/01_data_prep.py --task sev
-
-# cheap first pass before spending on the full 4,427-row test set
-python3 scripts/03_classify.py --mode baseline --n 300
-python3 scripts/03_classify.py --mode context --n 300 --k 3
-
-python3 scripts/04_eval.py --task sev
+cd data/raw
+python3 ../../scripts/02_retrieval.py            # builds + pickles the retriever(s)
+python3 ../../scripts/03_classify.py --task sev --sample_size 300
+python3 ../../scripts/04_eval.py --task sev
 ```
 
-Drop `--n 300` once the small run looks sane, to get the full test set.
-Or run `bug_severity_context_eng.ipynb` in Colab, which walks through the
-same steps with prompts for uploading `data/raw/` and entering your API key.
+Scripts read data files relative to the current directory (`./sev_test.csv`
+etc.) and write `artifacts/` (pickled retrievers) and `results/`
+(predictions + eval summary) the same way — run them from `data/raw/`.
+Drop `--sample_size` to run the full 4,427-row test set (2x the API cost of
+the n=300 pass). Or run `bug_severity_context_eng.ipynb` in Colab.
 
-## The honest question this is trying to answer
+## Real result (n=300, `--task sev`)
 
-Retrieved neighbors are topically similar but not obviously
-severity-similar. Does giving Claude those neighbors actually help it call
-severity, or does it just add noise? `04_eval.py`'s collapse check plus
-per-class F1 on the *severe* class (not overall accuracy) is what answers
-that. Either outcome — context helps, context is neutral, or context hurts
-— is a legitimate, reportable finding.
+|  | Accuracy | vs. 77.2% majority baseline | Recall: not severe | Recall: severe |
+|---|---|---|---|---|
+| Baseline | 75.3% | −1.9 pts | 0.740 | **0.792** |
+| Context-engineered | 80.3% | +3.1 pts | 0.830 | **0.727** |
+
+Neither run collapsed to the majority class. But the result is mixed, not a
+clean win: context engineering raised overall accuracy by pushing the model
+to predict "not severe" more often (recall on that class rose 0.740 ->
+0.830) — which, because "not severe" is the majority class, mechanically
+improves accuracy. The cost is recall on the class that actually matters
+for triage: **severe-bug recall dropped from 0.792 to 0.727** under
+context. The retrieved neighbors are topically similar (cosine similarity
+0.97-1.00 regardless of label) but not reliably severity-similar, so the
+context sometimes nudges the model toward the topic cluster's typical
+severity rather than the true one — here, toward under-calling severity.
+
+This was a 300-row first pass, not the full test set — treat the direction
+as suggestive, not final. Full `04_eval.py` output and raw predictions
+(including each response's raw text) are in `data/raw/results/`.
+
+One bug worth flagging for anyone extending this: `claude-haiku-4-5` wraps
+JSON replies in a ` ```json ` fence, so a plain `json.loads()` on the raw
+response fails 100% of the time. `classify_one()` in `03_classify.py`
+extracts the `{...}` object first — the first real run silently produced
+zero valid predictions on both conditions until this was fixed.
