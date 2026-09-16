@@ -1,5 +1,5 @@
-data/raw/*
-!data/raw/.gitkeep
+# data/raw/*.csv and *.npy are tracked via Git LFS (see .gitattributes),
+# not ignored. vocab.lst is small enough to commit as a plain text file.
 data/processed/*
 !data/processed/.gitkeep
 __pycache__/

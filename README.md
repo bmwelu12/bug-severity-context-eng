@@ -43,14 +43,40 @@ in the notebook, with your own key.
 
 ## Data
 
-Not committed to this repo (same as the LoRA project — data lives locally,
-not in git). You need these four files in `data/raw/`:
+`data/raw/*.csv` and `data/raw/*.npy` are tracked with **Git LFS** (see
+`.gitattributes`) since `embedding.npy` and the CSVs run up to ~65MB —
+past what's comfortable in a normal git blob. `vocab.lst` is small enough
+to commit as a plain text file. You need these files in `data/raw/`:
 
 - `sev_train.csv`, `sev_test.csv` — pre-split bug reports with `Description`,
   `Severity`, `Label` columns.
 - `embedding.npy`, `vocab.lst` — a pre-trained 100-dim word embedding table
   fit on this corpus, used by the retriever (mean-pooled doc vectors,
   cosine similarity) instead of building TF-IDF from scratch.
+
+To pull the real LFS content after cloning:
+
+```bash
+git lfs install   # once per machine
+git clone https://github.com/bmwelu12/bug-severity-context-eng.git
+cd bug-severity-context-eng
+git lfs pull
+```
+
+To add or update the raw data yourself:
+
+```bash
+git lfs install
+cp /path/to/sev_train.csv /path/to/sev_test.csv \
+   /path/to/embedding.npy /path/to/vocab.lst data/raw/
+git add data/raw/
+git commit -m "Add raw Bugzilla severity data via Git LFS"
+git push origin main
+```
+
+`.gitattributes` already marks `*.csv` and `*.npy` under `data/raw/` for
+LFS, so `git add` routes them through the LFS filter automatically as
+long as `git lfs install` has been run at least once on your machine.
 
 ## How to run
 
