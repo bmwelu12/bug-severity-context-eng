@@ -168,14 +168,23 @@ def classify(description):
         note = "_Set `ANTHROPIC_API_KEY` as a Space secret to enable live classification._"
         return note, note
 
-    base_raw, base_ms = call_claude(build_prompt(description))
-    base_out = format_result(base_raw, parse_prediction(base_raw), base_ms)
+    def run(context_block=None, neighbors=None):
+        # Catches anything from the API call itself (auth, workspace-scoping,
+        # rate limits, network) so a failure shows up as readable text in the
+        # output box instead of leaving it blank with the real error only in
+        # the Space's container logs.
+        try:
+            raw, ms = call_claude(build_prompt(description, context_block))
+        except Exception as e:
+            return f"⚠️ **API call failed**\n\n```\n{type(e).__name__}: {e}\n```"
+        return format_result(raw, parse_prediction(raw), ms, neighbors)
+
+    base_out = run()
 
     if retriever is not None:
         neighbors = retriever.retrieve(description, k=3)
         context_block = format_context_block(neighbors)
-        ctx_raw, ctx_ms = call_claude(build_prompt(description, context_block))
-        ctx_out = format_result(ctx_raw, parse_prediction(ctx_raw), ctx_ms, neighbors)
+        ctx_out = run(context_block, neighbors)
     else:
         ctx_out = "_Retriever data not found — see app.py header for what to add to this Space._"
 
@@ -299,4 +308,4 @@ with gr.Blocks(
                     gr.Dataframe(context_df, interactive=False)
 
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(show_error=True)
