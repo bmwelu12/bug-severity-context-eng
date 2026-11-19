@@ -1,22 +1,21 @@
 """
-Bug severity triage — baseline live demo + eval dashboard.
+Bug severity triage — live demo + eval dashboard.
 
-Deploy to a Hugging Face Space (Gradio SDK). Needs, somewhere findable
-(checks data/raw/, then the repo root — HF's drag-and-drop folder upload
-doesn't reliably preserve nested subfolders, so this tolerates a flattened
-upload instead of requiring exact nesting):
+Deploy to a Hugging Face Space (Gradio SDK). "Try it live" runs base
+Qwen2.5-0.5B-Instruct (zero-shot, no fine-tuning) side by side with
+Claude Haiku 4.5 — same comparison shape as the ticket-triage-lora-
+finetuning Space this app shares hardware with (ZeroGPU), just without
+the LoRA adapter column since this project never fine-tunes a model.
+
+Needs, somewhere findable (checks data/raw/, then the repo root — HF's
+drag-and-drop folder upload doesn't reliably preserve nested subfolders,
+so this tolerates a flattened upload instead of requiring exact nesting):
   - sev_eval_summary.json   (eval dashboard tab; also checked under a
     results/ subfolder. Optional — the tab shows a message instead of
     crashing if it's missing)
 
 Set ANTHROPIC_API_KEY as a Space secret (Settings -> Repository secrets).
-Without it, the "Try it live" tab shows a note.
-
-Baseline only — the context-engineered condition (retrieval over
-sev_train.csv/embedding.npy/vocab.lst) was removed from this demo. It's
-still in the actual experiment: see scripts/02_retrieval.py,
-scripts/03_classify.py, and the real n=300 result in the GitHub repo's
-README and results.html.
+Without it, the Claude column shows a note; the Qwen column still works.
 """
 
 import json
@@ -27,6 +26,11 @@ from pathlib import Path
 
 import gradio as gr
 import pandas as pd
+import spaces
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+QWEN_MODEL_NAME = "Qwen/Qwen2.5-0.5B-Instruct"
 
 DATA_DIR = Path("data/raw")
 RESULTS_DIR = DATA_DIR / "results"
@@ -44,7 +48,7 @@ def find_file(filename, search_dirs):
     return None
 
 
-MODEL = "claude-haiku-4-5"
+CLAUDE_MODEL = "claude-haiku-4-5"
 SYSTEM_PROMPT = (
     "You are triaging Bugzilla bug reports. Given a bug description, decide "
     "whether it is SEVERE (would be filed as blocker, critical, or major) or "
@@ -52,6 +56,49 @@ SYSTEM_PROMPT = (
     "Respond with only a JSON object: {\"prediction\": \"severe\" or \"not severe\"}."
 )
 LABEL_NAMES = {0: "not severe", 1: "severe"}
+
+
+# Register the ZeroGPU-decorated function BEFORE any model loading below.
+# ZeroGPU detects @spaces.GPU by looking at the function directly wired to
+# a Gradio event (classify, via run_btn.click below) -- not just any
+# decorated function that happens to exist in the module. It also detects
+# by importing this file, so if model loading throws for any reason,
+# Python never reaches a decorator defined after it, and HF shows the
+# generic "No @spaces.GPU function detected" message instead of the real
+# traceback. Defining generate_qwen here (undecorated) keeps that loading
+# order; the decorator itself goes on classify() further down.
+def generate_qwen(prompt, max_new_tokens=20):
+    # This function body runs with a real GPU attached, for the duration of
+    # this call only (that's the whole point of ZeroGPU). Move the model to
+    # cuda here rather than at load time.
+    local_device = "cuda" if torch.cuda.is_available() else "cpu"
+    model = qwen_model.to(local_device)
+
+    messages = [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": prompt},
+    ]
+    text = qwen_tokenizer.apply_chat_template(
+        messages, tokenize=False, add_generation_prompt=True
+    )
+    inputs = qwen_tokenizer([text], return_tensors="pt").to(local_device)
+    start_t = time.perf_counter()
+    out_ids = model.generate(**inputs, max_new_tokens=max_new_tokens, do_sample=False)
+    elapsed_ms = (time.perf_counter() - start_t) * 1000
+    out_ids = [o[len(i):] for i, o in zip(inputs.input_ids, out_ids)]
+    raw = qwen_tokenizer.batch_decode(out_ids, skip_special_tokens=True)[0]
+    return raw, elapsed_ms
+
+
+# ZeroGPU only attaches a GPU inside functions decorated with @spaces.GPU —
+# at import time (this code, right here) there is no CUDA device available,
+# even though one will exist once a decorated function is actually called.
+# So: load everything on CPU now, and move to "cuda" inside the decorated
+# call in generate_qwen() above.
+print("Loading base Qwen model...")
+qwen_tokenizer = AutoTokenizer.from_pretrained(QWEN_MODEL_NAME)
+qwen_model = AutoModelForCausalLM.from_pretrained(QWEN_MODEL_NAME, torch_dtype="auto")
+print("Qwen ready.")
 
 anthropic_client = None
 if os.environ.get("ANTHROPIC_API_KEY"):
@@ -67,7 +114,7 @@ def build_prompt(description):
 def call_claude(prompt):
     start = time.perf_counter()
     resp = anthropic_client.messages.create(
-        model=MODEL,
+        model=CLAUDE_MODEL,
         max_tokens=50,
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": prompt}],
@@ -101,21 +148,34 @@ def format_result(raw, pred, elapsed_ms):
     return f"{badge}\n\n_{elapsed_ms:.0f} ms_"
 
 
+@spaces.GPU
 def classify(description):
     if not description.strip():
-        return "_Enter a bug description above._"
-    if anthropic_client is None:
-        return "_Set `ANTHROPIC_API_KEY` as a Space secret to enable live classification._"
+        empty = "_Enter a bug description above._"
+        return empty, empty
 
-    # Catches anything from the API call itself (auth, workspace-scoping,
-    # rate limits, network) so a failure shows up as readable text in the
-    # output box instead of leaving it blank with the real error only in
-    # the Space's container logs.
+    prompt = build_prompt(description)
+
     try:
-        raw, ms = call_claude(build_prompt(description))
+        qwen_raw, qwen_ms = generate_qwen(prompt)
+        qwen_out = format_result(qwen_raw, parse_prediction(qwen_raw), qwen_ms)
     except Exception as e:
-        return f"⚠️ **API call failed**\n\n```\n{type(e).__name__}: {e}\n```"
-    return format_result(raw, parse_prediction(raw), ms)
+        qwen_out = f"⚠️ **Generation failed**\n\n```\n{type(e).__name__}: {e}\n```"
+
+    if anthropic_client is None:
+        claude_out = "_Set `ANTHROPIC_API_KEY` as a Space secret to enable this column._"
+    else:
+        # Catches anything from the API call itself (auth, workspace-scoping,
+        # rate limits, network) so a failure shows up as readable text in the
+        # output box instead of leaving it blank with the real error only in
+        # the Space's container logs.
+        try:
+            claude_raw, claude_ms = call_claude(prompt)
+            claude_out = format_result(claude_raw, parse_prediction(claude_raw), claude_ms)
+        except Exception as e:
+            claude_out = f"⚠️ **API call failed**\n\n```\n{type(e).__name__}: {e}\n```"
+
+    return qwen_out, claude_out
 
 
 EXAMPLES = [
@@ -181,15 +241,16 @@ with gr.Blocks(
     with gr.Column(elem_classes="hero"):
         gr.Markdown(
             "# 🐛 Bug Severity Triage\n"
-            "Claude Haiku 4.5 classifying real Bugzilla bug reports as "
-            "severe (blocker/critical/major) or not severe "
-            "(minor/normal/trivial)."
+            "Base Qwen2.5-0.5B-Instruct (zero-shot) vs. Claude Haiku 4.5 "
+            "classifying real Bugzilla bug reports as severe "
+            "(blocker/critical/major) or not severe (minor/normal/trivial). "
+            "Neither model is fine-tuned here."
         )
 
     with gr.Tab("🔴 Try it live"):
         gr.Markdown(
             "Paste a bug report below, or pick an example, and see how "
-            "Claude Haiku 4.5 classifies it.",
+            "both models classify it side by side.",
             elem_classes="section-header",
         )
         desc_in = gr.Textbox(
@@ -199,11 +260,18 @@ with gr.Blocks(
         run_btn = gr.Button("🚀 Classify", variant="primary", size="lg")
         gr.Examples(examples=EXAMPLES, inputs=[desc_in], label="Example bug reports")
 
-        gr.Markdown("#### 🔹 Claude Haiku 4.5 — Result", elem_classes="section-header")
-        with gr.Group(elem_classes="model-card"):
-            base_out = gr.Markdown()
+        gr.Markdown("### Results", elem_classes="section-header")
+        with gr.Row():
+            with gr.Column():
+                gr.Markdown("#### 🔹 Base Qwen (zero-shot)")
+                with gr.Group(elem_classes="model-card"):
+                    qwen_out = gr.Markdown()
+            with gr.Column():
+                gr.Markdown("#### 🟣 Claude Haiku 4.5")
+                with gr.Group(elem_classes="model-card"):
+                    claude_out = gr.Markdown()
 
-        run_btn.click(classify, inputs=[desc_in], outputs=[base_out])
+        run_btn.click(classify, inputs=[desc_in], outputs=[qwen_out, claude_out])
 
     with gr.Tab("📊 Eval dashboard"):
         missing_msg, baseline_df = build_dashboard()
@@ -213,7 +281,10 @@ with gr.Blocks(
             gr.Markdown(
                 "### Real n=300 result (Claude Haiku 4.5, baseline)\n"
                 "75.3% accuracy against a 77.2% majority-class baseline — "
-                "did not collapse to the majority class.",
+                "did not collapse to the majority class. **Note:** this "
+                "dashboard reflects the offline Claude-only experiment "
+                "(see the GitHub repo's README); the base-Qwen comparison "
+                "above is live-only and hasn't been run as a scored batch.",
                 elem_classes="section-header",
             )
             gr.Dataframe(baseline_df, interactive=False)

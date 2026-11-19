@@ -4,3 +4,7 @@ scikit-learn
 anthropic
 tqdm
 gradio==5.9.1
+spaces
+transformers>=4.40
+torch
+accelerate
