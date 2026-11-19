@@ -1,17 +1,22 @@
 """
-Bug severity triage — live demo + eval dashboard.
+Bug severity triage — baseline live demo + eval dashboard.
 
 Deploy to a Hugging Face Space (Gradio SDK). Needs, somewhere findable
 (checks data/raw/, then the repo root — HF's drag-and-drop folder upload
 doesn't reliably preserve nested subfolders, so this tolerates a flattened
 upload instead of requiring exact nesting):
-  - sev_train.csv, embedding.npy, vocab.lst   (builds the retriever)
-  - sev_eval_summary.json                     (eval dashboard tab; also
-    checked under a results/ subfolder. Optional — the tab shows a
-    message instead of crashing if it's missing)
+  - sev_eval_summary.json   (eval dashboard tab; also checked under a
+    results/ subfolder. Optional — the tab shows a message instead of
+    crashing if it's missing)
 
 Set ANTHROPIC_API_KEY as a Space secret (Settings -> Repository secrets).
-Without it, the "Try it live" tab shows a note and only the dashboard works.
+Without it, the "Try it live" tab shows a note.
+
+Baseline only — the context-engineered condition (retrieval over
+sev_train.csv/embedding.npy/vocab.lst) was removed from this demo. It's
+still in the actual experiment: see scripts/02_retrieval.py,
+scripts/03_classify.py, and the real n=300 result in the GitHub repo's
+README and results.html.
 """
 
 import json
@@ -21,23 +26,23 @@ import time
 from pathlib import Path
 
 import gradio as gr
-import numpy as np
 import pandas as pd
 
 DATA_DIR = Path("data/raw")
 RESULTS_DIR = DATA_DIR / "results"
 
 # HF Spaces' drag-and-drop folder upload doesn't reliably preserve nested
-# subfolders, so a fresh upload often lands these files flattened one or
-# two levels up from where the repo puts them. Rather than make the user
-# fight the upload UI into exact nesting, search the likely spots in order
-# and use whichever actually has the file.
+# subfolders, so a fresh upload often lands this file flattened one or two
+# levels up from where the repo puts it. Rather than make the user fight
+# the upload UI into exact nesting, search the likely spots in order and
+# use whichever actually has the file.
 def find_file(filename, search_dirs):
     for d in search_dirs:
         candidate = d / filename
         if candidate.exists():
             return candidate
     return None
+
 
 MODEL = "claude-haiku-4-5"
 SYSTEM_PROMPT = (
@@ -48,87 +53,6 @@ SYSTEM_PROMPT = (
 )
 LABEL_NAMES = {0: "not severe", 1: "severe"}
 
-TOKEN_RE = re.compile(r"[a-zA-Z']+")
-
-
-def strip_boilerplate(text: str) -> str:
-    text = re.sub(r"Created by .*? PDT", "", text)
-    text = re.sub(r"Updated by .*? PDT", "", text)
-    text = re.sub(r"Additional Details", "", text)
-    text = re.sub(r"In reply to comment \d+", "", text)
-    return text
-
-
-def tokenize(text: str) -> list:
-    return TOKEN_RE.findall(strip_boilerplate(text).lower())
-
-
-# --- retriever: mirrors scripts/02_retrieval.py, inlined so this file is a
-# single self-contained Space app ---
-class BugRetriever:
-    def __init__(self, train_df, word_to_idx, embeddings):
-        self.train_df = train_df.reset_index(drop=True)
-        self.word_to_idx = word_to_idx
-        self.embeddings = embeddings
-        self.doc_matrix = np.vstack(
-            [self._vec(str(t)) for t in self.train_df["Description"]]
-        )
-        norms = np.linalg.norm(self.doc_matrix, axis=1, keepdims=True)
-        norms[norms == 0] = 1
-        self.doc_matrix_norm = self.doc_matrix / norms
-
-    def _vec(self, text):
-        vecs = [self.embeddings[self.word_to_idx[t]] for t in tokenize(text) if t in self.word_to_idx]
-        return np.mean(vecs, axis=0) if vecs else np.zeros(self.embeddings.shape[1])
-
-    def retrieve(self, query_text, k=3):
-        q = self._vec(query_text)
-        norm = np.linalg.norm(q)
-        if norm == 0:
-            return []
-        q = q / norm
-        sims = self.doc_matrix_norm @ q
-        top_idx = np.argsort(sims)[::-1][:k]
-        return [
-            {
-                "text": self.train_df.iloc[i]["Description"],
-                "label": int(self.train_df.iloc[i]["Label"]),
-                "similarity": float(sims[i]),
-            }
-            for i in top_idx
-        ]
-
-
-def format_context_block(retrieved):
-    lines = ["Similar past bugs and their actual outcome:\n"]
-    for i, r in enumerate(retrieved, 1):
-        snippet = str(r["text"])[:250].replace("\n", " ")
-        outcome = LABEL_NAMES[r["label"]]
-        lines.append(f'{i}. "{snippet}..." -> {outcome} (similarity: {r["similarity"]:.2f})')
-    return "\n".join(lines)
-
-
-retriever = None
-SEARCH_DIRS = [DATA_DIR, Path(".")]
-vocab_path = find_file("vocab.lst", SEARCH_DIRS)
-embedding_path = find_file("embedding.npy", SEARCH_DIRS)
-train_path = find_file("sev_train.csv", SEARCH_DIRS)
-if vocab_path and embedding_path and train_path:
-    print(f"Building severity retriever from {train_path}, {embedding_path}, {vocab_path}...")
-    vocab = [w.strip() for w in open(vocab_path, encoding="utf-8")]
-    embeddings = np.load(embedding_path)
-    word_to_idx = {w: i for i, w in enumerate(vocab)}
-    train_df = pd.read_csv(train_path)
-    retriever = BugRetriever(train_df, word_to_idx, embeddings)
-    print(f"Retriever ready: {len(train_df):,} training bugs, {embeddings.shape[1]}-dim vectors.")
-else:
-    missing = [
-        name
-        for name, p in [("vocab.lst", vocab_path), ("embedding.npy", embedding_path), ("sev_train.csv", train_path)]
-        if not p
-    ]
-    print(f"Retriever data not found (missing: {missing}) — 'Try it live' tab will be disabled.")
-
 anthropic_client = None
 if os.environ.get("ANTHROPIC_API_KEY"):
     import anthropic
@@ -136,9 +60,8 @@ if os.environ.get("ANTHROPIC_API_KEY"):
     anthropic_client = anthropic.Anthropic()
 
 
-def build_prompt(description, context_block=None):
-    context_section = f"\n{context_block}\n" if context_block else ""
-    return f"{context_section}\nBug report:\n{description[:1500]}\n\nClassification:"
+def build_prompt(description):
+    return f"\nBug report:\n{description[:1500]}\n\nClassification:"
 
 
 def call_claude(prompt):
@@ -169,50 +92,30 @@ def parse_prediction(raw_text):
     return None
 
 
-def format_result(raw, pred, elapsed_ms, neighbors=None):
+def format_result(raw, pred, elapsed_ms):
     if pred is None:
         badge = f"⚠️ **Could not parse response**\n\n```\n{raw}\n```"
     else:
         emoji = "🔴" if pred == "severe" else "🟢"
         badge = f"{emoji} **{pred.upper()}**"
-    lines = [badge, f"_{elapsed_ms:.0f} ms_"]
-    if neighbors:
-        lines.append("\n**Retrieved neighbors:**")
-        for n in neighbors:
-            snippet = str(n["text"])[:140].replace("\n", " ")
-            lines.append(f"- sim={n['similarity']:.2f}, {LABEL_NAMES[n['label']]}: {snippet}...")
-    return "\n\n".join(lines)
+    return f"{badge}\n\n_{elapsed_ms:.0f} ms_"
 
 
 def classify(description):
     if not description.strip():
-        empty = "_Enter a bug description above._"
-        return empty, empty
+        return "_Enter a bug description above._"
     if anthropic_client is None:
-        note = "_Set `ANTHROPIC_API_KEY` as a Space secret to enable live classification._"
-        return note, note
+        return "_Set `ANTHROPIC_API_KEY` as a Space secret to enable live classification._"
 
-    def run(context_block=None, neighbors=None):
-        # Catches anything from the API call itself (auth, workspace-scoping,
-        # rate limits, network) so a failure shows up as readable text in the
-        # output box instead of leaving it blank with the real error only in
-        # the Space's container logs.
-        try:
-            raw, ms = call_claude(build_prompt(description, context_block))
-        except Exception as e:
-            return f"⚠️ **API call failed**\n\n```\n{type(e).__name__}: {e}\n```"
-        return format_result(raw, parse_prediction(raw), ms, neighbors)
-
-    base_out = run()
-
-    if retriever is not None:
-        neighbors = retriever.retrieve(description, k=3)
-        context_block = format_context_block(neighbors)
-        ctx_out = run(context_block, neighbors)
-    else:
-        ctx_out = "_Retriever data not found — see app.py header for what to add to this Space._"
-
-    return base_out, ctx_out
+    # Catches anything from the API call itself (auth, workspace-scoping,
+    # rate limits, network) so a failure shows up as readable text in the
+    # output box instead of leaving it blank with the real error only in
+    # the Space's container logs.
+    try:
+        raw, ms = call_claude(build_prompt(description))
+    except Exception as e:
+        return f"⚠️ **API call failed**\n\n```\n{type(e).__name__}: {e}\n```"
+    return format_result(raw, parse_prediction(raw), ms)
 
 
 EXAMPLES = [
@@ -256,11 +159,9 @@ def build_dashboard():
             "scripts/04_eval.py first, or copy the file from the GitHub "
             "repo into this Space.",
             None,
-            None,
         )
     baseline_df = report_to_df(summary["baseline"])
-    context_df = report_to_df(summary["context_engineered"])
-    return "", baseline_df, context_df
+    return "", baseline_df
 
 
 CUSTOM_CSS = """
@@ -279,18 +180,16 @@ with gr.Blocks(
 ) as demo:
     with gr.Column(elem_classes="hero"):
         gr.Markdown(
-            "# 🐛 Bug Severity Triage — Context Engineering\n"
-            "Both columns below are **the same model, Claude Haiku 4.5** — "
-            "nothing is fine-tuned or swapped out. The only thing that "
-            "changes is the prompt: does adding retrieved similar past bugs "
-            "improve severity classification versus a no-context baseline?"
+            "# 🐛 Bug Severity Triage\n"
+            "Claude Haiku 4.5 classifying real Bugzilla bug reports as "
+            "severe (blocker/critical/major) or not severe "
+            "(minor/normal/trivial)."
         )
 
     with gr.Tab("🔴 Try it live"):
         gr.Markdown(
             "Paste a bug report below, or pick an example, and see how "
-            "Claude Haiku 4.5 classifies it with vs. without retrieved "
-            "context, side by side.",
+            "Claude Haiku 4.5 classifies it.",
             elem_classes="section-header",
         )
         desc_in = gr.Textbox(
@@ -300,39 +199,24 @@ with gr.Blocks(
         run_btn = gr.Button("🚀 Classify", variant="primary", size="lg")
         gr.Examples(examples=EXAMPLES, inputs=[desc_in], label="Example bug reports")
 
-        gr.Markdown("### Results", elem_classes="section-header")
-        with gr.Row():
-            with gr.Column():
-                gr.Markdown("#### 🔹 Claude Haiku 4.5 — Baseline (no context)")
-                with gr.Group(elem_classes="model-card"):
-                    base_out = gr.Markdown()
-            with gr.Column():
-                gr.Markdown("#### 🟠 Claude Haiku 4.5 — Context-engineered (+3 similar bugs)")
-                with gr.Group(elem_classes="model-card"):
-                    ctx_out = gr.Markdown()
+        gr.Markdown("### Result", elem_classes="section-header")
+        with gr.Group(elem_classes="model-card"):
+            base_out = gr.Markdown()
 
-        run_btn.click(classify, inputs=[desc_in], outputs=[base_out, ctx_out])
+        run_btn.click(classify, inputs=[desc_in], outputs=[base_out])
 
     with gr.Tab("📊 Eval dashboard"):
-        missing_msg, baseline_df, context_df = build_dashboard()
+        missing_msg, baseline_df = build_dashboard()
         if missing_msg:
             gr.Markdown(f"⚠️ {missing_msg}")
         else:
             gr.Markdown(
-                "### Real n=300 result (Claude Haiku 4.5, both conditions)\n"
-                "Context-engineering raised accuracy (75.3% → 80.3%) and F1 on "
-                "both classes, but severe-class **recall** dropped 79.2% → "
-                "72.7% — it called \"severe\" less often. Neither run "
-                "collapsed to the majority class (77.2% not severe).",
+                "### Real n=300 result (Claude Haiku 4.5, baseline)\n"
+                "75.3% accuracy against a 77.2% majority-class baseline — "
+                "did not collapse to the majority class.",
                 elem_classes="section-header",
             )
-            with gr.Row():
-                with gr.Column():
-                    gr.Markdown("**Baseline (no context)**")
-                    gr.Dataframe(baseline_df, interactive=False)
-                with gr.Column():
-                    gr.Markdown("**Context-engineered (+3 similar bugs)**")
-                    gr.Dataframe(context_df, interactive=False)
+            gr.Dataframe(baseline_df, interactive=False)
 
 if __name__ == "__main__":
     demo.launch(show_error=True)
