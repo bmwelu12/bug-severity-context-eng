@@ -199,7 +199,7 @@ with gr.Blocks(
         run_btn = gr.Button("🚀 Classify", variant="primary", size="lg")
         gr.Examples(examples=EXAMPLES, inputs=[desc_in], label="Example bug reports")
 
-        gr.Markdown("### Result", elem_classes="section-header")
+        gr.Markdown("#### 🔹 Claude Haiku 4.5 — Result", elem_classes="section-header")
         with gr.Group(elem_classes="model-card"):
             base_out = gr.Markdown()
 
