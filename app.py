@@ -1,11 +1,14 @@
 """
 Bug severity triage — live demo + eval dashboard.
 
-Deploy to a Hugging Face Space (Gradio SDK). Expects, alongside this file,
-the same layout as the GitHub repo:
-  - data/raw/sev_train.csv, embedding.npy, vocab.lst   (builds the retriever)
-  - data/raw/results/sev_eval_summary.json             (eval dashboard tab;
-    optional — the tab shows a message instead of crashing if it's missing)
+Deploy to a Hugging Face Space (Gradio SDK). Needs, somewhere findable
+(checks data/raw/, then the repo root — HF's drag-and-drop folder upload
+doesn't reliably preserve nested subfolders, so this tolerates a flattened
+upload instead of requiring exact nesting):
+  - sev_train.csv, embedding.npy, vocab.lst   (builds the retriever)
+  - sev_eval_summary.json                     (eval dashboard tab; also
+    checked under a results/ subfolder. Optional — the tab shows a
+    message instead of crashing if it's missing)
 
 Set ANTHROPIC_API_KEY as a Space secret (Settings -> Repository secrets).
 Without it, the "Try it live" tab shows a note and only the dashboard works.
@@ -23,6 +26,18 @@ import pandas as pd
 
 DATA_DIR = Path("data/raw")
 RESULTS_DIR = DATA_DIR / "results"
+
+# HF Spaces' drag-and-drop folder upload doesn't reliably preserve nested
+# subfolders, so a fresh upload often lands these files flattened one or
+# two levels up from where the repo puts them. Rather than make the user
+# fight the upload UI into exact nesting, search the likely spots in order
+# and use whichever actually has the file.
+def find_file(filename, search_dirs):
+    for d in search_dirs:
+        candidate = d / filename
+        if candidate.exists():
+            return candidate
+    return None
 
 MODEL = "claude-haiku-4-5"
 SYSTEM_PROMPT = (
@@ -94,16 +109,25 @@ def format_context_block(retrieved):
 
 
 retriever = None
-if (DATA_DIR / "vocab.lst").exists() and (DATA_DIR / "embedding.npy").exists() and (DATA_DIR / "sev_train.csv").exists():
-    print("Building severity retriever...")
-    vocab = [w.strip() for w in open(DATA_DIR / "vocab.lst", encoding="utf-8")]
-    embeddings = np.load(DATA_DIR / "embedding.npy")
+SEARCH_DIRS = [DATA_DIR, Path(".")]
+vocab_path = find_file("vocab.lst", SEARCH_DIRS)
+embedding_path = find_file("embedding.npy", SEARCH_DIRS)
+train_path = find_file("sev_train.csv", SEARCH_DIRS)
+if vocab_path and embedding_path and train_path:
+    print(f"Building severity retriever from {train_path}, {embedding_path}, {vocab_path}...")
+    vocab = [w.strip() for w in open(vocab_path, encoding="utf-8")]
+    embeddings = np.load(embedding_path)
     word_to_idx = {w: i for i, w in enumerate(vocab)}
-    train_df = pd.read_csv(DATA_DIR / "sev_train.csv")
+    train_df = pd.read_csv(train_path)
     retriever = BugRetriever(train_df, word_to_idx, embeddings)
     print(f"Retriever ready: {len(train_df):,} training bugs, {embeddings.shape[1]}-dim vectors.")
 else:
-    print("Retriever data not found under data/raw/ — 'Try it live' tab will be disabled.")
+    missing = [
+        name
+        for name, p in [("vocab.lst", vocab_path), ("embedding.npy", embedding_path), ("sev_train.csv", train_path)]
+        if not p
+    ]
+    print(f"Retriever data not found (missing: {missing}) — 'Try it live' tab will be disabled.")
 
 anthropic_client = None
 if os.environ.get("ANTHROPIC_API_KEY"):
@@ -199,8 +223,8 @@ EXAMPLES = [
 
 
 def load_eval_summary():
-    path = RESULTS_DIR / "sev_eval_summary.json"
-    if not path.exists():
+    path = find_file("sev_eval_summary.json", [RESULTS_DIR, DATA_DIR, Path(".")])
+    if path is None:
         return None
     with open(path) as f:
         return json.load(f)
@@ -227,9 +251,10 @@ def build_dashboard():
     summary = load_eval_summary()
     if summary is None:
         return (
-            "No sev_eval_summary.json found under data/raw/results/ — run "
-            "scripts/03_classify.py and scripts/04_eval.py first, or copy "
-            "the file from the GitHub repo into this Space.",
+            "No sev_eval_summary.json found (checked data/raw/results/, "
+            "data/raw/, and the repo root) — run scripts/03_classify.py and "
+            "scripts/04_eval.py first, or copy the file from the GitHub "
+            "repo into this Space.",
             None,
             None,
         )
