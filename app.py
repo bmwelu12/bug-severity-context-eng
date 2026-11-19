@@ -280,15 +280,17 @@ with gr.Blocks(
     with gr.Column(elem_classes="hero"):
         gr.Markdown(
             "# 🐛 Bug Severity Triage — Context Engineering\n"
-            "Does giving Claude retrieved similar past bugs improve severity "
-            "classification versus a no-context baseline? Real Bugzilla bug "
-            "reports, Claude Haiku 4.5."
+            "Both columns below are **the same model, Claude Haiku 4.5** — "
+            "nothing is fine-tuned or swapped out. The only thing that "
+            "changes is the prompt: does adding retrieved similar past bugs "
+            "improve severity classification versus a no-context baseline?"
         )
 
     with gr.Tab("🔴 Try it live"):
         gr.Markdown(
-            "Paste a bug report below, or pick an example, and see how the "
-            "baseline and context-engineered conditions classify it side by side.",
+            "Paste a bug report below, or pick an example, and see how "
+            "Claude Haiku 4.5 classifies it with vs. without retrieved "
+            "context, side by side.",
             elem_classes="section-header",
         )
         desc_in = gr.Textbox(
@@ -301,11 +303,11 @@ with gr.Blocks(
         gr.Markdown("### Results", elem_classes="section-header")
         with gr.Row():
             with gr.Column():
-                gr.Markdown("#### 🔹 Baseline (no context)")
+                gr.Markdown("#### 🔹 Claude Haiku 4.5 — Baseline (no context)")
                 with gr.Group(elem_classes="model-card"):
                     base_out = gr.Markdown()
             with gr.Column():
-                gr.Markdown("#### 🟠 Context-engineered (+3 similar bugs)")
+                gr.Markdown("#### 🟠 Claude Haiku 4.5 — Context-engineered (+3 similar bugs)")
                 with gr.Group(elem_classes="model-card"):
                     ctx_out = gr.Markdown()
 
@@ -317,7 +319,7 @@ with gr.Blocks(
             gr.Markdown(f"⚠️ {missing_msg}")
         else:
             gr.Markdown(
-                "### Real n=300 result\n"
+                "### Real n=300 result (Claude Haiku 4.5, both conditions)\n"
                 "Context-engineering raised accuracy (75.3% → 80.3%) and F1 on "
                 "both classes, but severe-class **recall** dropped 79.2% → "
                 "72.7% — it called \"severe\" less often. Neither run "
@@ -326,10 +328,10 @@ with gr.Blocks(
             )
             with gr.Row():
                 with gr.Column():
-                    gr.Markdown("**Baseline**")
+                    gr.Markdown("**Baseline (no context)**")
                     gr.Dataframe(baseline_df, interactive=False)
                 with gr.Column():
-                    gr.Markdown("**Context-engineered**")
+                    gr.Markdown("**Context-engineered (+3 similar bugs)**")
                     gr.Dataframe(context_df, interactive=False)
 
 if __name__ == "__main__":
